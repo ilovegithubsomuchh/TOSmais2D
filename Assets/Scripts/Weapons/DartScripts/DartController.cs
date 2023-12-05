@@ -12,6 +12,7 @@ public class DartController : WeaponManager
 
     protected override void Attack()
     {
+       
         base.Attack();
         for (int i = 0; dartToSpawn < WeaponData.NumberToSpawn; i++)
         {
@@ -21,7 +22,6 @@ public class DartController : WeaponManager
             var position = new Vector3(horizontal, vertical, 0);
             var spawnpos = transform.parent.position + position * 2;
             Dart = Instantiate(WeaponData.prefab, spawnpos, Quaternion.identity);
-            Dart.transform.SetParent(transform);
             dartToSpawn++;
         }
 
