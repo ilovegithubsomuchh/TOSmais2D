@@ -9,6 +9,7 @@ public class WeaponManager : MonoBehaviour
     private float CurrentCoolDown;
     protected float offsetX;
     protected float offsetY;
+    protected float TimeBeforeDestroy;
 
     protected virtual void Start()
     {
@@ -31,4 +32,7 @@ public class WeaponManager : MonoBehaviour
         CurrentCoolDown = WeaponData.cooldownDuration;
         
     }
+
+  
+    
 }

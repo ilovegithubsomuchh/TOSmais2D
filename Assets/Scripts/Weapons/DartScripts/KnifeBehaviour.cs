@@ -26,6 +26,8 @@ public class KnifeBehaviour : WeaponManager
     protected override void Update()
     {
         Attack();
+        TimeBeforeDestroy += Time.deltaTime;
+        if(TimeBeforeDestroy > 4) Destroy();
        
     }
 
@@ -34,5 +36,9 @@ public class KnifeBehaviour : WeaponManager
         base.Attack();
         transform.position += new Vector3((WeaponDirectionX * (WeaponData.speed * Time.deltaTime)),
             (WeaponDirectionY * (WeaponData.speed * Time.deltaTime)), 0);
+    }
+    void Destroy()
+    {
+        Destroy(gameObject);
     }
 }

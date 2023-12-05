@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SwordController : WeaponManager
 {
-    private float TimeBeforeDestroy;
     private int swordToSpawn;
     private GameObject Sword;
+
     protected override void Attack()
     {
         for (int i = 0; swordToSpawn < WeaponData.NumberToSpawn; i++)
@@ -20,32 +20,20 @@ public class SwordController : WeaponManager
             Sword.transform.SetParent(transform);
             swordToSpawn++;
         }
-
-
-        
     }
 
-   
 
     protected override void Update()
     {
         base.Update();
         TimeBeforeDestroy += Time.deltaTime;
-        if(TimeBeforeDestroy > 4) Destroy();
-
     }
 
     private void Destroy()
     {
-       
         for (int i = 0; i < WeaponData.NumberToSpawn; i++)
         {
             Destroy(gameObject.transform.GetChild(i).gameObject);
         }
-        swordToSpawn = 0;
-        TimeBeforeDestroy = 0;
-        base.Attack();
-       
-
     }
 }

@@ -20,11 +20,12 @@ public class SwordBehaviour : WeaponManager
 
         Attack();
         
-        
     }
 
     protected override void Attack()
     {
         transform.RotateAround(transform.parent.position, transform.parent.forward, WeaponData.speed * Time.deltaTime);
     }
+    
+    
 }

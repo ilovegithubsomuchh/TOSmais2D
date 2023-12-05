@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3581093674985093842}
-  - component: {fileID: -855530195908943439}
+  - component: {fileID: -8063410506975974285}
   m_Layer: 0
-  m_Name: TestUpgradeControler
+  m_Name: SwordController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-855530195908943439
+--- !u!114 &-8063410506975974285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3831143133357916062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: add02578a0e3ddb4d81541a3361969ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 752aac9b3b44848469dc00fb3fb336d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponData: {fileID: 11400000, guid: 4aacb7cf945d22c48a5c664d7157178d, type: 2}
+  WeaponData: {fileID: 11400000, guid: f7d31853492499a4db34d71bcb0c5f3e, type: 2}
