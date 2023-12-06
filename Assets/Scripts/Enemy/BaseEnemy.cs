@@ -13,6 +13,8 @@ public abstract class BaseEnemy : MonoBehaviour
     protected float currentMoveSpeed;
     protected float currentHealth;
     protected float currentDamage;
+
+    protected static int killedEnemy;
     
     public abstract void Move();
 
@@ -27,8 +29,14 @@ public abstract class BaseEnemy : MonoBehaviour
         playerTransform = FindObjectOfType<PlayerMovement>().transform;
     }
     
-    void Update()
+    public virtual void Update()
     {
         Move();
+    }
+    
+    public static int CountKilledEnemy()
+    {
+        
+        return killedEnemy;
     }
 }
