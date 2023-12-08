@@ -11,6 +11,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public List<WeaponManager> WeaponSlots = new List<WeaponManager>(4);
     private Player _player;
+    public GameManager _gameManager;
 
     #region Upgrade Class
 
@@ -45,6 +46,7 @@ public class PlayerInventory : MonoBehaviour
     public void AddWeapon(int slotIndex, WeaponManager weapon)
     {
         WeaponSlots[slotIndex] = weapon;
+        
     }
 
     public void LevelUpWeapon(int slotIndex, int upgradeIndex)
@@ -60,6 +62,7 @@ public class PlayerInventory : MonoBehaviour
             AddWeapon(slotIndex, UpgradedWeapon.GetComponent<WeaponManager>());
             Destroy(transform.GetChild(slotIndex).gameObject);
             UpgradeOptions[upgradeIndex].WeaponData = UpgradedWeapon.GetComponent<WeaponManager>().WeaponData;
+            _gameManager.EndLevelUp();
            
         }
     }
@@ -82,6 +85,7 @@ public class PlayerInventory : MonoBehaviour
                         {
                             upgrade.UpgradeButton.onClick.AddListener(() =>
                                 LevelUpWeapon(i, WeaponToUpgrade.weaponUprgadeIndex));
+                            
                         }
 
                         break;
@@ -97,7 +101,13 @@ public class PlayerInventory : MonoBehaviour
                   
                     upgrade.UpgradeButton.onClick.AddListener(() =>
                         _player.SpawnWeapon(WeaponToUpgrade.startingWeapon));
+                    
+                    
+                 
                 }
+
+                upgrade.UpgradeDescription.text = WeaponToUpgrade.WeaponData.UpgradeDescription; 
+                
             }
         }
     }
@@ -112,8 +122,9 @@ public class PlayerInventory : MonoBehaviour
     }
 
 
-    public void RemoveAndAndUpgrades()
+    public void RemoveAndAddUpgrades()
     {
+        
         ClearUpgradeOptions();
         UpgradeOption();
     }

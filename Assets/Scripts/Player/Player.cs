@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public PlayerSO PlayerData;
     public int weaponIndex;
     public PlayerInventory _playerInventory;
+    public GameManager _gameManager;
 
 
     private void Awake()
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
         spawnedWeapon.transform.SetParent(transform);
         _playerInventory.AddWeapon(weaponIndex, weapon.GetComponent<WeaponManager>());
         weaponIndex++;
+        _gameManager.EndLevelUp();
     }
 
 

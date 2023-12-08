@@ -12,14 +12,27 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-        PlayerOjects.SendMessage("RemoveAndAndUpgrades");
-        Endlevel.gameObject.SetActive(true);
+       
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Levelup();
+        }   
+    }
+
+   public void Levelup()
+    {
+        PlayerOjects.SendMessage("RemoveAndAddUpgrades");
+        Endlevel.gameObject.SetActive(true);
+    }
+
+   public void EndLevelUp()
+    {
+        Endlevel.gameObject.SetActive(false);
     }
 }

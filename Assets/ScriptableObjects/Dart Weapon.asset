@@ -15,6 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 3576868344226724276, guid: 63dc71c7b696d4d4792868bdababc003, type: 3}
   damage: 0
   speed: 20
+  NumberToSpawn: 1
   cooldownDuration: 2
   NextUpgrade: {fileID: 3018636775563334298, guid: afd6f3704077dd94ea61dbf24f23e20f, type: 3}
-  NumberToSpawn: 1
+  UpgradeDescription: "Ajoute une fl\xE9chette \xE0 votre inventaire."
