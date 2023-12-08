@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1676822631366587372}
   - component: {fileID: 6848736044995805624}
-  - component: {fileID: 3400738464748285956}
   - component: {fileID: 2780224252269653009}
   - component: {fileID: 696269805849239698}
+  - component: {fileID: 4436524317587607623}
   m_Layer: 0
   m_Name: EnemySbireDistance
   m_TagString: Untagged
@@ -87,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3400738464748285956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294919193586820810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9687325289f6f1146a455a1826d13b0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: f574e90defabdfb49895dd28affc4ee3, type: 2}
 --- !u!61 &2780224252269653009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,3 +159,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4436524317587607623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294919193586820810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea2f601c6aeca1e4daecc3d6b7fda781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: f574e90defabdfb49895dd28affc4ee3, type: 2}
+  distanceToPlayer: 5
+  projectileGO: {fileID: 7840122375510835983, guid: 6273e3c287a6193418af5e7e83c09072, type: 3}
+  speedProjectile: 10

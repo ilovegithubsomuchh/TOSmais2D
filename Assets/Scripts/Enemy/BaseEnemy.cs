@@ -15,6 +15,8 @@ public abstract class BaseEnemy : MonoBehaviour
     protected float currentDamage;
 
     protected static int killedEnemy;
+    [SerializeField]
+    protected float distanceToPlayer;
     
     public abstract void Move();
 
