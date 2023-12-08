@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 581c222171b15f5468edb8f997c9adcb, type: 3}
-  m_Name: Dart Weapon
+  m_Name: Sword Weapon LVL1
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3576868344226724276, guid: 63dc71c7b696d4d4792868bdababc003, type: 3}
+  prefab: {fileID: 1800318107515779695, guid: f2588a7a053918b4e87f7e03b86ad663, type: 3}
   damage: 0
-  speed: 20
+  speed: 120
   NumberToSpawn: 1
   cooldownDuration: 2
-  TimeBeforeDestruction: 4
-  NextUpgrade: {fileID: 3018636775563334298, guid: afd6f3704077dd94ea61dbf24f23e20f, type: 3}
-  UpgradeDescription: "Ajoute une fl\xE9chette \xE0 votre inventaire."
+  TimeBeforeDestruction: 1.5
+  NextUpgrade: {fileID: 3831143133357916062, guid: c8272bc9fab2bc74c8cdc59ef59e5732, type: 3}
+  UpgradeDescription: RotateFaster

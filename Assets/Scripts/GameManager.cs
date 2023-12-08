@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
-       
+        Endlevel.gameObject.SetActive(false);
 
     }
 
@@ -34,5 +34,6 @@ public class GameManager : MonoBehaviour
    public void EndLevelUp()
     {
         Endlevel.gameObject.SetActive(false);
+        
     }
 }

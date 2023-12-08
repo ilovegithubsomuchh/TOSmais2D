@@ -15,7 +15,8 @@ public class PlayerInventory : MonoBehaviour
 
     #region Upgrade Class
 
-    [System.Serializable]
+    
+    
     public class WeaponUpgrade
     {
         public int weaponUprgadeIndex;
@@ -32,21 +33,64 @@ public class PlayerInventory : MonoBehaviour
         public Button UpgradeButton;
     }
 
+    [System.Serializable]
+    public class WeaponList
+    {
+        public GameObject Weapon;
+        public WeaponSO WeaponData;
+    }
+
     public List<WeaponUpgrade> UpgradeOptions = new List<WeaponUpgrade>();
     public List<UpgradeUI> UIOptions = new List<UpgradeUI>();
+    public List<WeaponList> Weapons = new List<WeaponList>();
 
     #endregion
 
 
     private void Start()
     {
+        var x = 0;
         _player = GetComponent<Player>();
+        for (int i = 0; i < WeaponSlots.Count; i++)
+        {
+            if (WeaponSlots[i] != null)
+            {
+                UpgradeOptions.Add(new WeaponUpgrade());
+            }
+        }
+
+        foreach (var AvailableWeapon in Weapons)
+        {
+            UpgradeOptions.Add(new WeaponUpgrade());
+        }
+
+        for (int i = 0; i < WeaponSlots.Count; i++)
+        {
+            if (WeaponSlots[i] != null)
+            {
+                UpgradeOptions[i].weaponUprgadeIndex = i;
+                UpgradeOptions[i].startingWeapon = WeaponSlots[i].WeaponData.prefab;
+                UpgradeOptions[i].WeaponData = WeaponSlots[i].WeaponData;
+            }
+        }
+
+        for (int i = 0; i < UpgradeOptions.Count; i++)
+        {
+            if (UpgradeOptions[i].WeaponData == null)
+            {
+                UpgradeOptions[i].weaponUprgadeIndex = i;
+
+                UpgradeOptions[i].startingWeapon = Weapons[x].Weapon;
+                UpgradeOptions[i].WeaponData = Weapons[x].WeaponData;
+                x++;
+            }
+        }
     }
+
 
     public void AddWeapon(int slotIndex, WeaponManager weapon)
     {
         WeaponSlots[slotIndex] = weapon;
-        
     }
 
     public void LevelUpWeapon(int slotIndex, int upgradeIndex)
@@ -60,10 +104,10 @@ public class PlayerInventory : MonoBehaviour
 
             UpgradedWeapon.transform.SetParent(transform);
             AddWeapon(slotIndex, UpgradedWeapon.GetComponent<WeaponManager>());
+
             Destroy(transform.GetChild(slotIndex).gameObject);
             UpgradeOptions[upgradeIndex].WeaponData = UpgradedWeapon.GetComponent<WeaponManager>().WeaponData;
             _gameManager.EndLevelUp();
-           
         }
     }
 
@@ -80,12 +124,15 @@ public class PlayerInventory : MonoBehaviour
                     if (WeaponSlots[i] != null && WeaponSlots[i].WeaponData == WeaponToUpgrade.WeaponData)
                     {
                         newWeapon = false;
+                        Debug.Log(WeaponToUpgrade.WeaponData);
 
                         if (!newWeapon)
                         {
+                            if (!WeaponToUpgrade.WeaponData.NextUpgrade) break;
                             upgrade.UpgradeButton.onClick.AddListener(() =>
                                 LevelUpWeapon(i, WeaponToUpgrade.weaponUprgadeIndex));
-                            
+                            upgrade.UpgradeDescription.text = WeaponToUpgrade.WeaponData.NextUpgrade
+                                .GetComponent<WeaponManager>().WeaponData.UpgradeDescription;
                         }
 
                         break;
@@ -98,16 +145,12 @@ public class PlayerInventory : MonoBehaviour
 
                 if (newWeapon)
                 {
-                  
                     upgrade.UpgradeButton.onClick.AddListener(() =>
                         _player.SpawnWeapon(WeaponToUpgrade.startingWeapon));
-                    
-                    
-                 
+                    upgrade.UpgradeDescription.text = WeaponToUpgrade.WeaponData.UpgradeDescription;
                 }
 
-                upgrade.UpgradeDescription.text = WeaponToUpgrade.WeaponData.UpgradeDescription; 
-                
+              
             }
         }
     }
@@ -124,7 +167,6 @@ public class PlayerInventory : MonoBehaviour
 
     public void RemoveAndAddUpgrades()
     {
-        
         ClearUpgradeOptions();
         UpgradeOption();
     }

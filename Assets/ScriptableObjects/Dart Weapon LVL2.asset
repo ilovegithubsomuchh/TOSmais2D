@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dart Weapon LVL2
   m_EditorClassIdentifier: 
   prefab: {fileID: 3576868344226724276, guid: 63dc71c7b696d4d4792868bdababc003, type: 3}
+  WeaponIndex: 1
   damage: 0
   speed: 20
   NumberToSpawn: 2

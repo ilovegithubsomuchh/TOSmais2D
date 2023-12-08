@@ -8,8 +8,19 @@ public class DartController : WeaponManager
 {
     private int dartToSpawn;
     private GameObject Dart;
+    public float test;
 
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        
+    }
     protected override void Attack()
     {
        
@@ -26,5 +37,6 @@ public class DartController : WeaponManager
         }
 
         dartToSpawn = 0;
+       
     }
 }

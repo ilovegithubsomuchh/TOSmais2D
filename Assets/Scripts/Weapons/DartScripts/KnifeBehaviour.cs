@@ -21,21 +21,24 @@ public class KnifeBehaviour : WeaponManager
         {
             WeaponDirectionX = 1;
         }
+
+        _destroy = true;
     }
 
     protected override void Update()
     {
         Attack();
-        TimeBeforeDestroy += Time.deltaTime;
-        if (TimeBeforeDestroy > 4) Destroy();
+        if (_destroy) TimeBeforeDestroy += Time.deltaTime;
+        if (TimeBeforeDestroy > WeaponData.TimeBeforeDestruction) Destroy();
     }
 
     protected override void Attack()
     {
-       transform.position += new Vector3((WeaponDirectionX * (WeaponData.speed * Time.deltaTime)), (WeaponDirectionY * (WeaponData.speed * Time.deltaTime)), 0);
+        transform.position += new Vector3((WeaponDirectionX * (WeaponData.speed * Time.deltaTime)),
+            (WeaponDirectionY * (WeaponData.speed * Time.deltaTime)), 0);
     }
 
-    void Destroy()
+    protected override void Destroy()
     {
         Destroy(gameObject);
     }

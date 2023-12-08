@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1800318107515779695, guid: f2588a7a053918b4e87f7e03b86ad663, type: 3}
   damage: 0
-  speed: 20
-  cooldownDuration: 1
-  NextUpgrade: {fileID: 3831143133357916062, guid: 500bb8fdc42b95d498cbd6ffe3c7eaa9, type: 3}
-  NumberToSpawn: 10
+  speed: 60
+  NumberToSpawn: 1
+  cooldownDuration: 2
+  TimeBeforeDestruction: 1.5
+  NextUpgrade: {fileID: 3831143133357916062, guid: 410d838a893d30a42a4a506309ac4433, type: 3}
+  UpgradeDescription: Add a rotating sword around the player

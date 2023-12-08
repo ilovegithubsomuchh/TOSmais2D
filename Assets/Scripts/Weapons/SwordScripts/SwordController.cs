@@ -6,9 +6,17 @@ public class SwordController : WeaponManager
 {
     private int swordToSpawn;
     private GameObject Sword;
+    public float test;
+
+
+    protected override void Start()
+    {
+        base.Start();
+    }
 
     protected override void Attack()
     {
+        base.Attack();
         for (int i = 0; swordToSpawn < WeaponData.NumberToSpawn; i++)
         {
             var radians = 2 * Mathf.PI / WeaponData.NumberToSpawn * i;
@@ -20,20 +28,7 @@ public class SwordController : WeaponManager
             Sword.transform.SetParent(transform);
             swordToSpawn++;
         }
-    }
 
-
-    protected override void Update()
-    {
-        base.Update();
-        TimeBeforeDestroy += Time.deltaTime;
-    }
-
-    private void Destroy()
-    {
-        for (int i = 0; i < WeaponData.NumberToSpawn; i++)
-        {
-            Destroy(gameObject.transform.GetChild(i).gameObject);
-        }
+        swordToSpawn = 0;
     }
 }

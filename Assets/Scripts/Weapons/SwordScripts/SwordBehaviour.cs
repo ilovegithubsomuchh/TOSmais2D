@@ -5,20 +5,21 @@ using UnityEngine;
 
 public class SwordBehaviour : WeaponManager
 {
-    
     protected override void Start()
     {
-        base.Start();
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-       
-        
+        _destroy = true;
+
     }
 
 
-    private void LateUpdate()
+    protected override void Update()
     {
-
+        base.Update();
+       
         Attack();
+        if(_destroy) TimeBeforeDestroy += Time.deltaTime;
+        if (TimeBeforeDestroy > WeaponData.TimeBeforeDestruction) Destroy();
         
     }
 
@@ -26,6 +27,10 @@ public class SwordBehaviour : WeaponManager
     {
         transform.RotateAround(transform.parent.position, transform.parent.forward, WeaponData.speed * Time.deltaTime);
     }
-    
+    protected override void Destroy()
+    {
+        
+        Destroy(gameObject);
+    }
     
 }
