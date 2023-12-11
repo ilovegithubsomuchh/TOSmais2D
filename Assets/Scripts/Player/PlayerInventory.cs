@@ -15,8 +15,7 @@ public class PlayerInventory : MonoBehaviour
 
     #region Upgrade Class
 
-    
-    
+    [System.Serializable]
     public class WeaponUpgrade
     {
         public int weaponUprgadeIndex;
@@ -90,6 +89,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddWeapon(int slotIndex, WeaponManager weapon)
     {
+        
         WeaponSlots[slotIndex] = weapon;
     }
 
