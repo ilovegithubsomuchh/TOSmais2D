@@ -13,22 +13,26 @@ public class Sbire : BaseEnemy
     public override void Attack()
     {
         Debug.Log("destroy");
-        Destroy(player);
+        //Destroy(player);
     }
 
     public override void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
-        
-        if (currentHealth < 0)
+        /*if (currentHealth < 0)
         {
             Kill();
-        }
+            
+        } */
     }
 
     public override void Kill()
     {
+
         Destroy(gameObject);
+        killedEnemy++;
+        
+        
     }
 
     private void Awake()
@@ -38,14 +42,25 @@ public class Sbire : BaseEnemy
         currentDamage = enemyData.Damage;
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         Debug.Log("Non");
-        if (collision.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player"))
         {
             Debug.Log("Oui");
-            player = collision.gameObject;
+            player = col.gameObject;
             Attack();
         }
     }
+
+    public override void Update()
+    {
+        base.Update();
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Kill();
+        }
+    }
+
+    
 }
