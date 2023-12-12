@@ -6,23 +6,22 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-[RequireComponent(typeof(PlayerMovement), typeof(PlayerInventory))]
+[RequireComponent(typeof(PlayerMovement), typeof(PlayerInventory))] // Mandatory Player's component.
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-    //  public List<GameObject> SpawnedWeapons;
-    public PlayerSO PlayerData;
-    public int weaponIndex;
+    [Header("References")] public PlayerSO PlayerData;
     public PlayerInventory _playerInventory;
     public GameManager _gameManager;
+
+
+    [Header("Inventory Variables")] public int weaponIndex;
 
 
     private void Awake()
     {
         GetComponent<PlayerMovement>();
-        _playerInventory = GetComponent<PlayerInventory>();
-        SpawnWeapon(PlayerData.baseWeapon);
+        _playerInventory = GetComponent<PlayerInventory>(); // Including  component variables 
+        SpawnWeapon(PlayerData.baseWeapon); // spawn the base player weapon
     }
 
     public void SpawnWeapon(GameObject weapon)
@@ -30,14 +29,7 @@ public class Player : MonoBehaviour
         GameObject spawnedWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
         spawnedWeapon.transform.SetParent(transform);
         _playerInventory.AddWeapon(weaponIndex, weapon.GetComponent<WeaponManager>());
-        weaponIndex++;
-        _gameManager.EndLevelUp();
-    }
-
-
-    private void Update()
-    {
-        // var index = Random.Range(0, weaponIndex);
-        // _playerInventory.LevelUpWeapon(index);
+        weaponIndex++; // once we spawned the weapon, make sur the next one goes in the next slot
+        _gameManager.EndLevelUp(); // if player is leveling up, make sure to endLevelup State
     }
 }

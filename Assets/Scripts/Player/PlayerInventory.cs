@@ -54,13 +54,9 @@ public class PlayerInventory : MonoBehaviour
         {
             if (WeaponSlots[i] != null)
             {
-                UpgradeOptions.Add(new WeaponUpgrade());
+                UpgradeOptions.Add(
+                    new WeaponUpgrade()); // for each weapon in the game add in a list an entry for possible upgrades
             }
-        }
-
-        foreach (var AvailableWeapon in Weapons)
-        {
-            UpgradeOptions.Add(new WeaponUpgrade());
         }
 
         for (int i = 0; i < WeaponSlots.Count; i++)
@@ -69,7 +65,7 @@ public class PlayerInventory : MonoBehaviour
             {
                 UpgradeOptions[i].weaponUprgadeIndex = i;
                 UpgradeOptions[i].startingWeapon = WeaponSlots[i].WeaponData.prefab;
-                UpgradeOptions[i].WeaponData = WeaponSlots[i].WeaponData;
+                UpgradeOptions[i].WeaponData = WeaponSlots[i].WeaponData; // getting player's weapon on start and put it on the list for future upgrades
             }
         }
 
@@ -80,7 +76,7 @@ public class PlayerInventory : MonoBehaviour
                 UpgradeOptions[i].weaponUprgadeIndex = i;
 
                 UpgradeOptions[i].startingWeapon = Weapons[x].Weapon;
-                UpgradeOptions[i].WeaponData = Weapons[x].WeaponData;
+                UpgradeOptions[i].WeaponData = Weapons[x].WeaponData; // for each other upgrade options, fill the list with all available weapons 
                 x++;
             }
         }
@@ -89,13 +85,13 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddWeapon(int slotIndex, WeaponManager weapon)
     {
-        
-        WeaponSlots[slotIndex] = weapon;
+        WeaponSlots[slotIndex] = weapon; // add a new weapon manager in the specified slotIndex
     }
 
     public void LevelUpWeapon(int slotIndex, int upgradeIndex)
     {
-        if (WeaponSlots.Count > slotIndex && (WeaponSlots != null))
+        if (WeaponSlots.Count > slotIndex &&
+            (WeaponSlots != null)) // Check if index to upgrade weapon is not out of range
         {
             WeaponManager weaponManager = WeaponSlots[slotIndex];
 
@@ -103,54 +99,53 @@ public class PlayerInventory : MonoBehaviour
                 Quaternion.identity);
 
             UpgradedWeapon.transform.SetParent(transform);
-            AddWeapon(slotIndex, UpgradedWeapon.GetComponent<WeaponManager>());
 
-            Destroy(transform.GetChild(slotIndex).gameObject);
+            AddWeapon(slotIndex, UpgradedWeapon.GetComponent<WeaponManager>());
+            Destroy(transform.GetChild(slotIndex)
+                .gameObject); // Create a child with the next update from the previous weaponManager, and remove the previous one
             UpgradeOptions[upgradeIndex].WeaponData = UpgradedWeapon.GetComponent<WeaponManager>().WeaponData;
-            _gameManager.EndLevelUp();
+            _gameManager.EndLevelUp(); // Finish the level up options in the gameManager
         }
     }
 
     void UpgradeOption()
     {
-        foreach (var upgrade in UIOptions)
+        foreach (var upgrade in UIOptions) // Checking all possibles upgrades
         {
-            WeaponUpgrade WeaponToUpgrade = UpgradeOptions[Random.Range(0, UpgradeOptions.Count)];
-            if (WeaponToUpgrade != null)
+            WeaponUpgrade
+                WeaponToUpgrade =
+                    UpgradeOptions[Random.Range(0, UpgradeOptions.Count)]; // Choose 1 upgrade from all possibles 
+            if (WeaponToUpgrade != null) // Double checking 
             {
                 bool newWeapon = false;
                 for (int i = 0; i < WeaponSlots.Count; i++)
                 {
-                    if (WeaponSlots[i] != null && WeaponSlots[i].WeaponData == WeaponToUpgrade.WeaponData)
+                    if (WeaponSlots[i] != null &&
+                        WeaponSlots[i].WeaponData == WeaponToUpgrade.WeaponData) // Browse through all the list 
                     {
-                        newWeapon = false;
-                        Debug.Log(WeaponToUpgrade.WeaponData);
-
-                        if (!newWeapon)
+                        if (!newWeapon) // if not a new weapon then upgrade the previous one in the specified slot index
                         {
                             if (!WeaponToUpgrade.WeaponData.NextUpgrade) break;
                             upgrade.UpgradeButton.onClick.AddListener(() =>
                                 LevelUpWeapon(i, WeaponToUpgrade.weaponUprgadeIndex));
                             upgrade.UpgradeDescription.text = WeaponToUpgrade.WeaponData.NextUpgrade
-                                .GetComponent<WeaponManager>().WeaponData.UpgradeDescription;
+                                .GetComponent<WeaponManager>().WeaponData.UpgradeDescription; 
                         }
 
                         break;
                     }
                     else
                     {
-                        newWeapon = true;
+                        newWeapon = true; // If not the it must be a new weapon
                     }
                 }
 
-                if (newWeapon)
+                if (newWeapon) // if it's a new weapon, you add a new weapon 
                 {
                     upgrade.UpgradeButton.onClick.AddListener(() =>
                         _player.SpawnWeapon(WeaponToUpgrade.startingWeapon));
                     upgrade.UpgradeDescription.text = WeaponToUpgrade.WeaponData.UpgradeDescription;
                 }
-
-              
             }
         }
     }
@@ -160,14 +155,14 @@ public class PlayerInventory : MonoBehaviour
     {
         foreach (var upgrade in UIOptions)
         {
-            upgrade.UpgradeButton.onClick.RemoveAllListeners();
+            upgrade.UpgradeButton.onClick.RemoveAllListeners(); // Clear all buttons' listener and chosen upgrade
         }
     }
 
 
     public void RemoveAndAddUpgrades()
     {
-        ClearUpgradeOptions();
+        ClearUpgradeOptions(); // Clear all listeners and upgrade the weapon
         UpgradeOption();
     }
 }

@@ -19,8 +19,8 @@ public class SwordController : WeaponManager
         base.Attack();
         for (int i = 0; swordToSpawn < WeaponData.NumberToSpawn; i++)
         {
-            var radians = 2 * Mathf.PI / WeaponData.NumberToSpawn * i;
-            var vertical = Mathf.Sin(radians);
+            var radians = 2 * Mathf.PI / WeaponData.NumberToSpawn * i; //Player spawn a number of  weapon determined in the specified weapon data 
+            var vertical = Mathf.Sin(radians);// calcul to put all sword in a circle around the player
             var horizontal = Mathf.Cos(radians);
             var position = new Vector3(horizontal, vertical, 0);
             var spawnpos = transform.parent.position + position * 2;
