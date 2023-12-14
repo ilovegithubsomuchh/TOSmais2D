@@ -32,4 +32,5 @@ public class Player : MonoBehaviour
         weaponIndex++; // once we spawned the weapon, make sur the next one goes in the next slot
         _gameManager.EndLevelUp(); // if player is leveling up, make sure to endLevelup State
     }
+    
 }

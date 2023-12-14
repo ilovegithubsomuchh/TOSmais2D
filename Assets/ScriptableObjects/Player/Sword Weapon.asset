@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Sword Weapon
   m_EditorClassIdentifier: 
   prefab: {fileID: 1800318107515779695, guid: f2588a7a053918b4e87f7e03b86ad663, type: 3}
-  damage: 0
+  level: 0
+  damage: 10
   speed: 60
   NumberToSpawn: 1
   cooldownDuration: 2

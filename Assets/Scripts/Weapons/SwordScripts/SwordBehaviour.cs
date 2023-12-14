@@ -32,4 +32,6 @@ public class SwordBehaviour : WeaponManager
     {
         Destroy(gameObject);
     }
+    
+    
 }

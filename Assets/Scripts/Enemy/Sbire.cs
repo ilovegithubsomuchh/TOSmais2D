@@ -7,7 +7,8 @@ public class Sbire : BaseEnemy
 {
     public override void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.transform.position,enemyData.MoveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, playerTransform.transform.position,
+            enemyData.MoveSpeed * Time.deltaTime);
     }
 
     public override void Attack()
@@ -19,20 +20,16 @@ public class Sbire : BaseEnemy
     public override void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
-        /*if (currentHealth < 0)
+        if (currentHealth < 0)
         {
             Kill();
-            
-        } */
+        }
     }
 
     public override void Kill()
     {
-
         Destroy(gameObject);
         killedEnemy++;
-        
-        
     }
 
     private void Awake()
@@ -61,6 +58,4 @@ public class Sbire : BaseEnemy
             Kill();
         }
     }
-
-    
 }

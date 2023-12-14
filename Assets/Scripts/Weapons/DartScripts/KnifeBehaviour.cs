@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine.Utility;
@@ -42,4 +43,8 @@ public class KnifeBehaviour : WeaponManager
     {
         Destroy(gameObject);
     }
+   
+    
+
+    
 }

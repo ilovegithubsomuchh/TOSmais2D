@@ -31,4 +31,27 @@ public class WeaponManager : MonoBehaviour
     protected virtual void Destroy()
     {
     }
+    
+    protected void OnTriggerEnter2D(Collider2D other)
+    {
+       
+        if (other.gameObject.CompareTag("Ennemy"))
+        {
+            Debug.Log("here");
+            var ennemy =  other.GetComponent<Sbire>();
+            ennemy.TakeDamage(WeaponData.damage);
+            StartCoroutine(FlashEnemyMaterial(other.GetComponent<Renderer>().material));
+           
+        }
+        
+        
+    }
+    IEnumerator FlashEnemyMaterial(Material enemyMaterial)
+    {
+        // Changer temporairement le matériau pour simuler un clignotement
+        enemyMaterial.color = Color.red;
+        yield return new WaitForSeconds(0.2f); // Ajustez la durée du clignotement selon vos besoins
+        enemyMaterial.color = Color.white; // Revenir à la couleur d'origine
+    }
+   
 }
