@@ -26,7 +26,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
     public abstract void Kill();
     
-    void Start()
+    public virtual void Start()
     {
         playerTransform = FindObjectOfType<PlayerMovement>().transform;
     }
