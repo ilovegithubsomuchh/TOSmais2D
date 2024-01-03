@@ -55,18 +55,19 @@ public class KnifeBehaviour : WeaponManager
         // Calculate rotation angle based on movement direction
         float angle = Mathf.Atan2(WeaponDirectionX, WeaponDirectionY) * Mathf.Rad2Deg;
 
-        // Apply rotation to the object on the z-axis
-        transform.rotation = Quaternion.Euler(0, 0, angle);
 
         // If WeaponDirectionY is not zero, flip the sprite vertically
-        if (WeaponDirectionY != 0)
+        _spriteRenderer.flipY = WeaponDirectionY != 0;
+
+        if (WeaponDirectionY != 0 && WeaponDirectionX != 0)
         {
-            _spriteRenderer.flipY = true;
+            angle *= -1;
+            Debug.Log("here");
         }
-        else
-        {
-            _spriteRenderer.flipY = false;
-        }
+        
+
+        // Apply rotation to the object on the z-axis
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     protected override void Destroy()
