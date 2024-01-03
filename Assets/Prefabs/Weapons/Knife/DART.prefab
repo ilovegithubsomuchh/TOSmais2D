@@ -99,7 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponData: {fileID: 11400000, guid: 4aacb7cf945d22c48a5c664d7157178d, type: 2}
   PlayerMovement: {fileID: 0}
-  WeaponDirectionY: 0
 --- !u!70 &3290206372632486840
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
