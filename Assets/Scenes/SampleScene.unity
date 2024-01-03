@@ -609,7 +609,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -655,7 +655,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9655b28d1d10dc644ab85a9a5770265b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1771b9b137ff4794b8af5ff038ed86c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -702,7 +702,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.86, y: 6.74}
+    oldSize: {x: 3.36, y: 6.27}
     newSize: {x: 7.86, y: 6.74}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2341,6 +2341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerOjects: {fileID: 281449184}
+  Ennemy: {fileID: 2097158545}
   Endlevel: {fileID: 2026677521}
 --- !u!4 &1655213273
 Transform:
@@ -2654,7 +2655,17 @@ MonoBehaviour:
     waveQuota: 0
     spawnInterval: 0
     spawnCount: 0
+  - waveName: Wave2
+    enemyGroups:
+    - enemyName: 
+      enemyCount: 3
+      spawnCount: 0
+      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
+    waveQuota: 0
+    spawnInterval: 0
+    spawnCount: 0
   currentWaveCount: 0
+  GameManager: {fileID: 1655213272}
 --- !u!4 &2097158547
 Transform:
   m_ObjectHideFlags: 0

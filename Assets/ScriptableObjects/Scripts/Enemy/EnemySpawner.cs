@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
         public float spawnInterval;
         public int spawnCount; //The number of enemies already spawned in this wave
     }
-    
+
     [System.Serializable]
     public class EnemyGroup
     {
@@ -26,24 +26,24 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public List<Wave> waves; // List of all the waves in the game
-    public int currentWaveCount; // The index of current wave
+    public int currentWaveCount;
+    public GameManager GameManager; // The index of current wave
 
-    [Header("Spawner Attributes")]
-    private float spawnTimer; //Timer use to determine when to spawn the next enemy
-    
+    [Header("Spawner Attributes")] private float spawnTimer; //Timer use to determine when to spawn the next enemy
+
     private Transform player;
 
     private BaseEnemy _baseEnemy;
 
     private int test = 0;
-    
+
     void Start()
     {
         player = FindObjectOfType<PlayerMovement>().transform;
         CalculateWaveQuota();
         test = waves[currentWaveCount].waveQuota;
     }
-    
+
     void Update()
     {
         spawnTimer += Time.deltaTime;
@@ -53,7 +53,6 @@ public class EnemySpawner : MonoBehaviour
             spawnTimer = 0f;
             SpawnEnemies();
         }
-        
     }
 
     void CalculateWaveQuota()
@@ -65,7 +64,6 @@ public class EnemySpawner : MonoBehaviour
         }
 
         waves[currentWaveCount].waveQuota = currentWaveQuota;
-        Debug.LogWarning(currentWaveQuota);
     }
 
     void SpawnEnemies()
@@ -90,20 +88,19 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (BaseEnemy.CountKilledEnemy() == test)
         {
-            ChangeWave();
+            GameManager.Levelup();
+            //ChangeWave();
         }
     }
 
     void ChangeWave()
-    {
-        Debug.Log("changewave");
-        if (waves[currentWaveCount].spawnCount == waves[currentWaveCount].waveQuota)
+    
+    { if (waves[currentWaveCount].spawnCount == waves[currentWaveCount].waveQuota)
         {
-            
             currentWaveCount++;
             CalculateWaveQuota();
             test += waves[currentWaveCount].waveQuota;
+           
         }
     }
-    
 }

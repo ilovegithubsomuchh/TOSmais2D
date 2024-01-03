@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5283865695968247555, guid: bad931b6a8277394c9f4fa4875d10bae, type: 3}
   level: 0
-  damage: 3
+  damage: 10
   speed: 20
   NumberToSpawn: 2
   cooldownDuration: 5
