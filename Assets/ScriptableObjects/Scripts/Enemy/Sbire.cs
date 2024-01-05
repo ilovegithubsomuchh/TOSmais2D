@@ -41,11 +41,16 @@ public class Sbire : BaseEnemy
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         Debug.Log("Non");
-        if (col.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Oui");
-            player = col.gameObject;
+            player = other.gameObject;
             Attack();
         }
     }

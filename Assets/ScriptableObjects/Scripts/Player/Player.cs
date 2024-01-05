@@ -10,11 +10,14 @@ using Random = UnityEngine.Random;
 public class Player : MonoBehaviour
 {
     [Header("References")] public PlayerSO PlayerData;
-    public PlayerInventory _playerInventory;
+    private PlayerInventory _playerInventory;
     public GameManager _gameManager;
 
 
     [Header("Inventory Variables")] public int weaponIndex;
+    
+    [Header("Player Stats")] private float _maxlife;
+    private float _currentLife;
 
 
     private void Awake()
@@ -22,6 +25,8 @@ public class Player : MonoBehaviour
         GetComponent<PlayerMovement>();
         _playerInventory = GetComponent<PlayerInventory>(); // Including  component variables 
         SpawnWeapon(PlayerData.baseWeapon); // spawn the base player weapon
+        _maxlife = 100f;
+        _currentLife = _maxlife;
     }
 
     public void SpawnWeapon(GameObject weapon)

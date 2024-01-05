@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 281449190}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,7 +329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerData: {fileID: 11400000, guid: 5a36a2c82d77a2d43b082a657661cb04, type: 2}
-  _playerInventory: {fileID: 0}
   _gameManager: {fileID: 1655213272}
   weaponIndex: 0
 --- !u!114 &281449186
