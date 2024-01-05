@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547a31f147e649e4a9f16d23ea70a0ed, type: 3}
   m_Name: SbireDistanceEnemy
   m_EditorClassIdentifier: 
-  moveSpeed: 8
+  moveSpeed: 4
   maxHealth: 75
   damage: 75
   armor: 0
