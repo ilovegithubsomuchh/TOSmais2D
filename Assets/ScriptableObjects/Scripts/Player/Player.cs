@@ -22,12 +22,14 @@ public class Player : MonoBehaviour
     private static readonly int IsDead = Animator.StringToHash("IsDead");
 
 
+    private bool awake;
+
     private void Awake()
     {
         GetComponent<PlayerMovement>();
         _animator = GetComponent<Animator>();
         _playerInventory = GetComponent<PlayerInventory>(); // Including  component variables 
-        SpawnWeapon(PlayerData.baseWeapon); // spawn the base player weapon
+        SpawnBaseWeapon(PlayerData.baseWeapon); // spawn the base player weapon
         _maxlife = 100f;
         _currentLife = _maxlife;
     }
@@ -47,6 +49,15 @@ public class Player : MonoBehaviour
         }
         
     }
+    public void SpawnBaseWeapon(GameObject weapon)
+    {
+        GameObject spawnedWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
+        spawnedWeapon.transform.SetParent(transform);
+        _playerInventory.AddWeapon(weaponIndex, weapon.GetComponent<WeaponManager>());
+        weaponIndex++; // once we spawned the weapon, make sur the next one goes in the next slot
+    }
+
+    
 
     public void SpawnWeapon(GameObject weapon)
     {
@@ -54,7 +65,7 @@ public class Player : MonoBehaviour
         spawnedWeapon.transform.SetParent(transform);
         _playerInventory.AddWeapon(weaponIndex, weapon.GetComponent<WeaponManager>());
         weaponIndex++; // once we spawned the weapon, make sur the next one goes in the next slot
-        //_gameManager.EndLevelUp(); // if player is leveling up, make sure to endLevelup State
+        _gameManager.EndLevelUp(); // if player is leveling up, make sure to endLevelup State
     }
     
 }

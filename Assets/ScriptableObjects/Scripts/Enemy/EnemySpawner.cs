@@ -89,7 +89,6 @@ public class EnemySpawner : MonoBehaviour
         else if (BaseEnemy.CountKilledEnemy() == test)
         {
             GameManager.LevelUp();
-            //ChangeWave();
         }
     }
 

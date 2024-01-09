@@ -37,7 +37,6 @@ public class WeaponManager : MonoBehaviour
        
         if (other.gameObject.CompareTag("Ennemy"))
         {
-            Debug.Log("here");
             var ennemy =  other.GetComponent<BaseEnemy>();
             ennemy.TakeDamage(WeaponData.damage);
             StartCoroutine(FlashEnemyMaterial(other.GetComponent<Renderer>().material));

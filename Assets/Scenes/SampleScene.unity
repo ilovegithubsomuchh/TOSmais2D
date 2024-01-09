@@ -497,10 +497,6 @@ MonoBehaviour:
     UpgradeDescription: {fileID: 1229893910}
     UpgradeIcon: {fileID: 380191892}
     UpgradeButton: {fileID: 380191891}
-  - UpgradeName: {fileID: 1000059388}
-    UpgradeDescription: {fileID: 1000059388}
-    UpgradeIcon: {fileID: 950556799}
-    UpgradeButton: {fileID: 950556798}
   Weapons:
   - Weapon: {fileID: 3018636775563334298, guid: 20a7526041bdafd45bab3e91b4a90ffd, type: 3}
     WeaponData: {fileID: 11400000, guid: 4aacb7cf945d22c48a5c664d7157178d, type: 2}
