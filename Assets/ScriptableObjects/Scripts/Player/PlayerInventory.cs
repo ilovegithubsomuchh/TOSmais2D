@@ -110,13 +110,16 @@ public class PlayerInventory : MonoBehaviour
 
     void UpgradeOption()
     {
+        List<WeaponUpgrade> availableWeaponUgrades = new List<WeaponUpgrade>(UpgradeOptions);
         foreach (var upgrade in UIOptions) // Checking all possibles upgrades
         {
             WeaponUpgrade
                 WeaponToUpgrade =
                     UpgradeOptions[Random.Range(0, UpgradeOptions.Count)]; // Choose 1 upgrade from all possibles 
+            availableWeaponUgrades.Remove(WeaponToUpgrade);
             if (WeaponToUpgrade != null) // Double checking 
             {
+                EnagleUpgradeUI(upgrade);
                 bool newWeapon = false;
                 for (int i = 0; i < WeaponSlots.Count; i++)
                 {
@@ -125,7 +128,11 @@ public class PlayerInventory : MonoBehaviour
                     {
                         if (!newWeapon) // if not a new weapon then upgrade the previous one in the specified slot index
                         {
-                            if (!WeaponToUpgrade.WeaponData.NextUpgrade) break;
+                            if (!WeaponToUpgrade.WeaponData.NextUpgrade)
+                            {
+                                 DisableUpgradeUI(upgrade);
+                                break;
+                            }
                             upgrade.UpgradeButton.onClick.AddListener(() =>
                                 LevelUpWeapon(i, WeaponToUpgrade.weaponUprgadeIndex));
                             upgrade.UpgradeDescription.text = WeaponToUpgrade.WeaponData.NextUpgrade
@@ -156,6 +163,7 @@ public class PlayerInventory : MonoBehaviour
         foreach (var upgrade in UIOptions)
         {
             upgrade.UpgradeButton.onClick.RemoveAllListeners(); // Clear all buttons' listener and chosen upgrade
+            DisableUpgradeUI(upgrade);
         }
     }
 
@@ -164,5 +172,14 @@ public class PlayerInventory : MonoBehaviour
     {
         ClearUpgradeOptions(); // Clear all listeners and upgrade the weapon
         UpgradeOption();
+    }
+
+    void DisableUpgradeUI(UpgradeUI ui)
+    {
+        ui.UpgradeName.transform.parent.gameObject.SetActive(false);
+    }
+    void EnagleUpgradeUI(UpgradeUI ui)
+    {
+        ui.UpgradeName.transform.parent.gameObject.SetActive(true);
     }
 }
