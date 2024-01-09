@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Sbire : BaseEnemy
 {
+    private Player _player;
+    private int dmg = 10;
+    
     public override void Move()
     {
         transform.position = Vector2.MoveTowards(transform.position, playerTransform.transform.position,
@@ -13,8 +16,8 @@ public class Sbire : BaseEnemy
 
     public override void Attack()
     {
-        Debug.Log("destroy");
-        //Destroy(player);
+       
+       _player.TakeDamage(dmg);
     }
 
     public override void TakeDamage(float dmg)
@@ -38,24 +41,41 @@ public class Sbire : BaseEnemy
         currentHealth = enemyData.MaxHealth;
         currentDamage = enemyData.Damage;
     }
-
-    private void OnCollisionEnter2D(Collision2D col)
+    
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Non");
-        if (col.gameObject.CompareTag("Player"))
+       
+        if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Oui");
-            player = col.gameObject;
-            Attack();
+            canDamage = true;
+            _player = other.GetComponent<Player>();
+            StartCoroutine(DealDamages());
+           
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            canDamage = false;
         }
     }
 
     public override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.Q))
+        
+    }
+    
+    IEnumerator DealDamages()
+    {
+        
+        while (canDamage)
         {
-            Kill();
+            yield return new WaitForSeconds(0.4f);
+            Attack();
         }
     }
 }

@@ -16,6 +16,7 @@ public class KnifeBehaviour : WeaponManager
 
         // Get the SpriteRenderer component attached to this GameObject
         _spriteRenderer = GetComponent<SpriteRenderer>();
+      
 
         // Initialize WeaponDirectionX and WeaponDirectionY with PlayerMovement input values
         WeaponDirectionX = PlayerMovement._inputValueX;
@@ -57,11 +58,11 @@ public class KnifeBehaviour : WeaponManager
 
 
         // If WeaponDirectionY is not zero, flip the sprite vertically
-        _spriteRenderer.flipY = WeaponDirectionY != 0;
+      
 
         if (WeaponDirectionY != 0 && WeaponDirectionX != 0)
         {
-            angle *= -1;
+           // angle *= -1;
             Debug.Log("here");
         }
         
