@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6848736044995805624}
   - component: {fileID: 2780224252269653009}
   - component: {fileID: 696269805849239698}
-  - component: {fileID: 3815912932646298828}
+  - component: {fileID: -5951576564491668134}
   m_Layer: 0
   m_Name: EnemyHerald
   m_TagString: Ennemy
@@ -141,13 +141,13 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294919193586820810}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -159,7 +159,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &3815912932646298828
+--- !u!114 &-5951576564491668134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
