@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,18 +6,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+
 public class PlayerInventory : MonoBehaviour
 {
-    // Weapon slots and player reference
     public List<WeaponManager> WeaponSlots = new List<WeaponManager>(4);
     private Player _player;
     public GameManager _gameManager;
 
-    // Serializable classes for weapon upgrades, UI, and available weapons
+    #region Upgrade Class
+
     [System.Serializable]
     public class WeaponUpgrade
     {
-        public int weaponUpgradeIndex;
+        public int weaponUprgadeIndex;
         public GameObject startingWeapon;
         public WeaponSO WeaponData;
     }
@@ -37,203 +39,147 @@ public class PlayerInventory : MonoBehaviour
         public WeaponSO WeaponData;
     }
 
-    // Lists to store weapon upgrades, UI elements, and available weapons
     public List<WeaponUpgrade> UpgradeOptions = new List<WeaponUpgrade>();
     public List<UpgradeUI> UIOptions = new List<UpgradeUI>();
     public List<WeaponList> Weapons = new List<WeaponList>();
 
-    // Initialization on start
+    #endregion
+
+
     private void Start()
     {
-        InitializeWeaponUpgrades();
-    }
-
-    // Initialize weapon upgrades based on available weapon slots and weapons
-    private void InitializeWeaponUpgrades()
-    {
+        var x = 0;
         _player = GetComponent<Player>();
+        for (int i = 0; i < WeaponSlots.Count; i++)
+        {
+            if (WeaponSlots[i] != null)
+            {
+                UpgradeOptions.Add(
+                    new WeaponUpgrade()); // for each weapon in the game add in a list an entry for possible upgrades
+            }
+        }
 
         for (int i = 0; i < WeaponSlots.Count; i++)
         {
             if (WeaponSlots[i] != null)
             {
-                UpgradeOptions.Add(new WeaponUpgrade
-                {
-                    weaponUpgradeIndex = i,
-                    startingWeapon = WeaponSlots[i].WeaponData.prefab,
-                    WeaponData = WeaponSlots[i].WeaponData
-                });
+                UpgradeOptions[i].weaponUprgadeIndex = i;
+                UpgradeOptions[i].startingWeapon = WeaponSlots[i].WeaponData.prefab;
+                UpgradeOptions[i].WeaponData = WeaponSlots[i].WeaponData; // getting player's weapon on start and put it on the list for future upgrades
             }
         }
 
-        // Add additional upgrades for available weapons
-        for (int i = UpgradeOptions.Count; i < WeaponSlots.Count; i++)
+        for (int i = 0; i < UpgradeOptions.Count; i++)
         {
-            UpgradeOptions.Add(new WeaponUpgrade
+            if (UpgradeOptions[i].WeaponData == null)
             {
-                weaponUpgradeIndex = i,
-                startingWeapon = Weapons[i - UpgradeOptions.Count].Weapon,
-                WeaponData = Weapons[i - UpgradeOptions.Count].WeaponData
-            });
+                UpgradeOptions[i].weaponUprgadeIndex = i;
+
+                UpgradeOptions[i].startingWeapon = Weapons[x].Weapon;
+                UpgradeOptions[i].WeaponData = Weapons[x].WeaponData; // for each other upgrade options, fill the list with all available weapons 
+                x++;
+            }
         }
     }
 
-    // Add a new weapon to a specified slot index
+
     public void AddWeapon(int slotIndex, WeaponManager weapon)
     {
-        WeaponSlots[slotIndex] = weapon;
+        WeaponSlots[slotIndex] = weapon; // add a new weapon manager in the specified slotIndex
     }
 
-    // Level up a weapon in the specified slot index
     public void LevelUpWeapon(int slotIndex, int upgradeIndex)
     {
-        if (IsValidSlotIndex(slotIndex))
+        if (WeaponSlots.Count > slotIndex &&
+            (WeaponSlots != null)) // Check if index to upgrade weapon is not out of range
         {
             WeaponManager weaponManager = WeaponSlots[slotIndex];
-            GameObject upgradedWeapon = Instantiate(weaponManager.WeaponData.NextUpgrade, transform.position, Quaternion.identity);
-            upgradedWeapon.transform.SetParent(transform);
 
-            // Replace the existing weapon with the upgraded one
-            AddWeapon(slotIndex, upgradedWeapon.GetComponent<WeaponManager>());
-            Destroy(transform.GetChild(slotIndex).gameObject);
+            GameObject UpgradedWeapon = Instantiate(weaponManager.WeaponData.NextUpgrade, transform.position,
+                Quaternion.identity);
 
-            // Update the weapon data in the upgrade options
-            UpgradeOptions[upgradeIndex].WeaponData = upgradedWeapon.GetComponent<WeaponManager>().WeaponData;
+            UpgradedWeapon.transform.SetParent(transform);
 
-            // Signal the end of the level-up process
-            _gameManager.EndLevelUp();
+            AddWeapon(slotIndex, UpgradedWeapon.GetComponent<WeaponManager>());
+            Destroy(transform.GetChild(slotIndex)
+                .gameObject); // Create a child with the next update from the previous weaponManager, and remove the previous one
+            UpgradeOptions[upgradeIndex].WeaponData = UpgradedWeapon.GetComponent<WeaponManager>().WeaponData;
+            _gameManager.EndLevelUp(); // Finish the level up options in the gameManager
         }
     }
 
-    // Check if the slot index is valid
-    private bool IsValidSlotIndex(int slotIndex)
-    {
-        return WeaponSlots != null && WeaponSlots.Count > slotIndex;
-    }
-
-    // Main method for handling weapon upgrades
     void UpgradeOption()
     {
-        List<WeaponUpgrade> availableWeaponUpgrades = new List<WeaponUpgrade>(UpgradeOptions);
-
-        // Iterate through UI options for displaying upgrades
-        foreach (var upgrade in UIOptions)
+        List<WeaponUpgrade> availableWeaponUgrades = new List<WeaponUpgrade>(UpgradeOptions);
+        foreach (var upgrade in UIOptions) // Checking all possibles upgrades
         {
-            // Get a random available weapon upgrade
-            WeaponUpgrade weaponToUpgrade = GetRandomUpgrade(availableWeaponUpgrades);
-
-            if (weaponToUpgrade != null)
+            WeaponUpgrade
+                WeaponToUpgrade =
+                    availableWeaponUgrades[Random.Range(0, UpgradeOptions.Count)]; // Choose 1 upgrade from all possibles 
+            availableWeaponUgrades.Remove(WeaponToUpgrade);
+            if (WeaponToUpgrade != null) // Double checking 
             {
-                // Enable UI for the current upgrade option
-                EnableUpgradeUI(upgrade);
+                EnagleUpgradeUI(upgrade);
+                bool newWeapon = false;
+                for (int i = 0; i < WeaponSlots.Count; i++)
+                {
+                    if (WeaponSlots[i] != null &&
+                        WeaponSlots[i].WeaponData == WeaponToUpgrade.WeaponData) // Browse through all the list 
+                    {
+                        if (!newWeapon) // if not a new weapon then upgrade the previous one in the specified slot index
+                        {
+                            if (!WeaponToUpgrade.WeaponData.NextUpgrade)
+                            {
+                                 DisableUpgradeUI(upgrade);
+                                break;
+                            }
+                            upgrade.UpgradeButton.onClick.AddListener(() =>
+                                LevelUpWeapon(i, WeaponToUpgrade.weaponUprgadeIndex));
+                            upgrade.UpgradeDescription.text = WeaponToUpgrade.WeaponData.NextUpgrade
+                                .GetComponent<WeaponManager>().WeaponData.UpgradeDescription; 
+                        }
 
-                // Check if the weapon is already in slots or a new weapon
-                if (!IsWeaponInSlots(weaponToUpgrade))
-                {
-                    HandleNewWeapon(upgrade, weaponToUpgrade);
+                        break;
+                    }
+                    else
+                    {
+                        newWeapon = true; // If not the it must be a new weapon
+                    }
                 }
-                else if (CanUpgradeWeapon(weaponToUpgrade))
+
+                if (newWeapon) // if it's a new weapon, you add a new weapon 
                 {
-                    HandleUpgradeForExistingWeapon(upgrade, weaponToUpgrade);
-                }
-                else
-                {
-                    // If the weapon cannot be upgraded, disable the UI
-                    DisableUpgradeUI(upgrade);
+                    upgrade.UpgradeButton.onClick.AddListener(() =>
+                        _player.SpawnWeapon(WeaponToUpgrade.startingWeapon));
+                    upgrade.UpgradeDescription.text = WeaponToUpgrade.WeaponData.UpgradeDescription;
                 }
             }
         }
     }
 
-    // Get a random available weapon upgrade and remove it from the list
-    private WeaponUpgrade GetRandomUpgrade(List<WeaponUpgrade> availableWeaponUpgrades)
-    {
-        if (availableWeaponUpgrades.Count > 0)
-        {
-            int randomIndex = Random.Range(0, availableWeaponUpgrades.Count);
-            WeaponUpgrade weaponToUpgrade = availableWeaponUpgrades[randomIndex];
-            availableWeaponUpgrades.RemoveAt(randomIndex);
-            return weaponToUpgrade;
-        }
 
-        return null;
-    }
-
-    // Check if the weapon is already in the player's weapon slots
-    private bool IsWeaponInSlots(WeaponUpgrade weaponToUpgrade)
-    {
-        foreach (var slot in WeaponSlots)
-        {
-            if (slot != null && slot.WeaponData == weaponToUpgrade.WeaponData)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    // Check if the weapon can be upgraded
-    private bool CanUpgradeWeapon(WeaponUpgrade weaponToUpgrade)
-    {
-        return weaponToUpgrade.WeaponData.NextUpgrade != null;
-    }
-
-    // Handle UI and listeners for upgrading an existing weapon
-    private void HandleUpgradeForExistingWeapon(UpgradeUI upgrade, WeaponUpgrade weaponToUpgrade)
-    {
-        int slotIndex = GetWeaponSlotIndex(weaponToUpgrade);
-        upgrade.UpgradeButton.onClick.AddListener(() => LevelUpWeapon(slotIndex, weaponToUpgrade.weaponUpgradeIndex));
-        upgrade.UpgradeDescription.text = weaponToUpgrade.WeaponData.NextUpgrade.GetComponent<WeaponManager>().WeaponData.UpgradeDescription;
-    }
-
-    // Get the slot index of a weapon in the player's weapon slots
-    private int GetWeaponSlotIndex(WeaponUpgrade weaponToUpgrade)
-    {
-        for (int i = 0; i < WeaponSlots.Count; i++)
-        {
-            if (WeaponSlots[i] != null && WeaponSlots[i].WeaponData == weaponToUpgrade.WeaponData)
-            {
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
-    // Handle UI and listeners for spawning a new weapon
-    private void HandleNewWeapon(UpgradeUI upgrade, WeaponUpgrade weaponToUpgrade)
-    {
-        upgrade.UpgradeButton.onClick.AddListener(() => _player.SpawnWeapon(weaponToUpgrade.startingWeapon));
-        upgrade.UpgradeDescription.text = weaponToUpgrade.WeaponData.UpgradeDescription;
-    }
-
-    // Method to clear upgrade options
     void ClearUpgradeOptions()
     {
         foreach (var upgrade in UIOptions)
         {
-            upgrade.UpgradeButton.onClick.RemoveAllListeners();
+            upgrade.UpgradeButton.onClick.RemoveAllListeners(); // Clear all buttons' listener and chosen upgrade
             DisableUpgradeUI(upgrade);
         }
     }
 
-    // Method to disable upgrade UI
-    private void DisableUpgradeUI(UpgradeUI ui)
+
+    public void RemoveAndAddUpgrades()
+    {
+        ClearUpgradeOptions(); // Clear all listeners and upgrade the weapon
+        UpgradeOption();
+    }
+
+    void DisableUpgradeUI(UpgradeUI ui)
     {
         ui.UpgradeName.transform.parent.gameObject.SetActive(false);
     }
-
-    // Method to enable upgrade UI
-    private void EnableUpgradeUI(UpgradeUI ui)
+    void EnagleUpgradeUI(UpgradeUI ui)
     {
         ui.UpgradeName.transform.parent.gameObject.SetActive(true);
-    }
-
-    // Method called to remove and add upgrades
-    public void RemoveAndAddUpgrades()
-    {
-        ClearUpgradeOptions();
-        UpgradeOption();
     }
 }

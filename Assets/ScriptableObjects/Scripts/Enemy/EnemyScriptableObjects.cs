@@ -16,8 +16,8 @@ public class EnemyScriptableObjects : ScriptableObject
     public float MaxHealth { get => maxHealth; private set => maxHealth = value; }
     
     [SerializeField]
-    float damage;
-    public float Damage { get => damage; private set => damage = value; }
+    int damage;
+    public int Damage { get => damage; private set => damage = value; }
     
     [SerializeField]
     float armor;

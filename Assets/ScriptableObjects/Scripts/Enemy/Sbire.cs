@@ -10,14 +10,21 @@ public class Sbire : BaseEnemy
     
     public override void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, playerTransform.transform.position,
-            enemyData.MoveSpeed * Time.deltaTime);
-    }
+        Vector2 targetPosition = playerTransform.transform.position;
 
+        // Check if there is an obstacle in the path
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, Vector2.Distance(transform.position, targetPosition), LayerMask.GetMask("Ennemy"));
+
+        if (hit.collider == null)
+        {
+            // If no obstacle, move towards the player
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, enemyData.MoveSpeed * Time.deltaTime);
+        }
+    }
     public override void Attack()
     {
        
-       _player.TakeDamage(dmg);
+       _player.TakeDamage(currentDamage);
     }
 
     public override void TakeDamage(float dmg)
