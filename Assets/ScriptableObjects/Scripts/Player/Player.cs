@@ -45,8 +45,7 @@ public class Player : MonoBehaviour
             _animator.SetBool(IsDead, true);
             //Lancer l"écran de GameOver
         }
-
-        Debug.Log(_currentLife);
+        
     }
 
     public void SpawnWeapon(GameObject weapon)
