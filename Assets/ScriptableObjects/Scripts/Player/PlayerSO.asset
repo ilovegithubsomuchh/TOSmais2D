@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb92a8da488bc54282d45ff09134ddd, type: 3}
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
-  baseWeapon: {fileID: 3831143133357916062, guid: c8272bc9fab2bc74c8cdc59ef59e5732, type: 3}
+  baseWeapon: {fileID: 3831143133357916062, guid: 500bb8fdc42b95d498cbd6ffe3c7eaa9, type: 3}

@@ -488,9 +488,6 @@ MonoBehaviour:
   - weaponUprgadeIndex: 0
     startingWeapon: {fileID: 0}
     WeaponData: {fileID: 0}
-  - weaponUprgadeIndex: 0
-    startingWeapon: {fileID: 0}
-    WeaponData: {fileID: 0}
   UIOptions:
   - UpgradeName: {fileID: 1000059388}
     UpgradeDescription: {fileID: 1000059388}
@@ -500,11 +497,15 @@ MonoBehaviour:
     UpgradeDescription: {fileID: 1229893910}
     UpgradeIcon: {fileID: 380191892}
     UpgradeButton: {fileID: 380191891}
+  - UpgradeName: {fileID: 1000059388}
+    UpgradeDescription: {fileID: 1000059388}
+    UpgradeIcon: {fileID: 950556799}
+    UpgradeButton: {fileID: 950556798}
   Weapons:
-  - Weapon: {fileID: 3831143133357916062, guid: 500bb8fdc42b95d498cbd6ffe3c7eaa9, type: 3}
-    WeaponData: {fileID: 11400000, guid: f7d31853492499a4db34d71bcb0c5f3e, type: 2}
   - Weapon: {fileID: 3018636775563334298, guid: 20a7526041bdafd45bab3e91b4a90ffd, type: 3}
     WeaponData: {fileID: 11400000, guid: 4aacb7cf945d22c48a5c664d7157178d, type: 2}
+  - Weapon: {fileID: 3831143133357916062, guid: 500bb8fdc42b95d498cbd6ffe3c7eaa9, type: 3}
+    WeaponData: {fileID: 11400000, guid: f7d31853492499a4db34d71bcb0c5f3e, type: 2}
 --- !u!114 &281449187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1429,37 +1430,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572973199}
   m_CullTransparentMesh: 1
---- !u!1 &612231446
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 612231447}
-  m_Layer: 0
-  m_Name: aehealifgzqi
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &612231447
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612231446}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 920.5565, y: 299.70108, z: 14.256269}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3257,9 +3227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30adc4ed0497fc242ab94169a8a04574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerObjects: {fileID: 0}
-  Enemy: {fileID: 0}
-  EndLevelUI: {fileID: 0}
+  PlayerObjects: {fileID: 281449184}
+  Enemy: {fileID: 2097158545}
+  EndLevelUI: {fileID: 2026677521}
 --- !u!4 &1655213273
 Transform:
   m_ObjectHideFlags: 0
@@ -3700,9 +3670,9 @@ MonoBehaviour:
   - waveName: Wave1
     enemyGroups:
     - enemyName: 
-      enemyCount: 1
+      enemyCount: 0
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: 623338a99925c2f46a57334995368153, type: 3}
+      enemyPrefab: {fileID: 0}
     waveQuota: 0
     spawnInterval: 0
     spawnCount: 0
@@ -3712,6 +3682,15 @@ MonoBehaviour:
       enemyCount: 3
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
+    waveQuota: 0
+    spawnInterval: 0
+    spawnCount: 0
+  - waveName: Wave3
+    enemyGroups:
+    - enemyName: 
+      enemyCount: 8
+      spawnCount: 0
+      enemyPrefab: {fileID: 1294919193586820810, guid: 623338a99925c2f46a57334995368153, type: 3}
     waveQuota: 0
     spawnInterval: 0
     spawnCount: 0
@@ -3746,4 +3725,3 @@ SceneRoots:
   - {fileID: 683576943}
   - {fileID: 2097158547}
   - {fileID: 476426757}
-  - {fileID: 612231447}

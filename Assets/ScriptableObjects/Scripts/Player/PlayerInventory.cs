@@ -182,4 +182,4 @@ public class PlayerInventory : MonoBehaviour
     {
         ui.UpgradeName.transform.parent.gameObject.SetActive(true);
     }
-}
+} 
