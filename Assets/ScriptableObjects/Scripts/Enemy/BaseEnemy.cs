@@ -13,6 +13,7 @@ public abstract class BaseEnemy : MonoBehaviour
     protected float currentMoveSpeed;
     protected float currentHealth;
     protected float currentDamage;
+    protected bool canDamage;
 
     protected static int killedEnemy;
     [SerializeField]

@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
 
     [Header("Inventory Variables")] public int weaponIndex;
     
-    [Header("Player Stats")] private float _maxlife;
-    private static float _currentLife;
+    [SerializeField] [Header("Player Stats")] private float _maxlife;
+   private static float _currentLife;
     private static readonly int IsDead = Animator.StringToHash("IsDead");
 
 
@@ -43,7 +43,10 @@ public class Player : MonoBehaviour
         if (_currentLife <= 0)
         {
             _animator.SetBool(IsDead, true);
+            //Lancer l"écran de GameOver
         }
+
+        Debug.Log(_currentLife);
     }
 
     public void SpawnWeapon(GameObject weapon)

@@ -47,7 +47,7 @@ public class Sbire : BaseEnemy
        
         if (other.gameObject.CompareTag("Player"))
         {
-
+            canDamage = true;
             _player = other.GetComponent<Player>();
             StartCoroutine(DealDamages());
            
@@ -56,26 +56,25 @@ public class Sbire : BaseEnemy
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        
         if (other.gameObject.CompareTag("Player"))
         {
-            StopCoroutine(DealDamages());
+            canDamage = false;
         }
     }
 
     public override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Kill();
-        }
+        
     }
     
     IEnumerator DealDamages()
     {
-        while (true)
+        
+        while (canDamage)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.4f);
             Attack();
         }
     }

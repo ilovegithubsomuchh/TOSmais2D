@@ -332,6 +332,7 @@ MonoBehaviour:
   PlayerData: {fileID: 11400000, guid: 5a36a2c82d77a2d43b082a657661cb04, type: 2}
   _gameManager: {fileID: 1655213272}
   weaponIndex: 0
+  _maxlife: 0
 --- !u!114 &281449186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2445,7 +2446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2097158546
 MonoBehaviour:
   m_ObjectHideFlags: 0
