@@ -1429,6 +1429,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572973199}
   m_CullTransparentMesh: 1
+--- !u!1 &612231446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 612231447}
+  m_Layer: 0
+  m_Name: aehealifgzqi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &612231447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612231446}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 920.5565, y: 299.70108, z: 14.256269}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3226,9 +3257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30adc4ed0497fc242ab94169a8a04574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerOjects: {fileID: 281449184}
-  Ennemy: {fileID: 2097158545}
-  Endlevel: {fileID: 2026677521}
+  PlayerObjects: {fileID: 0}
+  Enemy: {fileID: 0}
+  EndLevelUI: {fileID: 0}
 --- !u!4 &1655213273
 Transform:
   m_ObjectHideFlags: 0
@@ -3715,3 +3746,4 @@ SceneRoots:
   - {fileID: 683576943}
   - {fileID: 2097158547}
   - {fileID: 476426757}
+  - {fileID: 612231447}
