@@ -3667,16 +3667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - waveName: Wave1
-    enemyGroups:
-    - enemyName: 
-      enemyCount: 0
-      spawnCount: 0
-      enemyPrefab: {fileID: 0}
-    waveQuota: 0
-    spawnInterval: 0
-    spawnCount: 0
-  - waveName: Wave2
+  - waveName: Wave 1
     enemyGroups:
     - enemyName: 
       enemyCount: 3
@@ -3685,12 +3676,12 @@ MonoBehaviour:
     waveQuota: 0
     spawnInterval: 0
     spawnCount: 0
-  - waveName: Wave3
+  - waveName: Wave2
     enemyGroups:
     - enemyName: 
-      enemyCount: 8
+      enemyCount: 2
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: 623338a99925c2f46a57334995368153, type: 3}
+      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
     waveQuota: 0
     spawnInterval: 0
     spawnCount: 0
