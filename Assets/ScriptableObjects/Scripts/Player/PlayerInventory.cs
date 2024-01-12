@@ -113,29 +113,27 @@ public class PlayerInventory : MonoBehaviour
         List<WeaponUpgrade> availableWeaponUgrades = new List<WeaponUpgrade>(UpgradeOptions);
         foreach (var upgrade in UIOptions) // Checking all possibles upgrades
         {
-            WeaponUpgrade
-                WeaponToUpgrade =
-                    availableWeaponUgrades[Random.Range(0, UpgradeOptions.Count)]; // Choose 1 upgrade from all possibles 
-            availableWeaponUgrades.Remove(WeaponToUpgrade);
-            if (WeaponToUpgrade != null) // Double checking 
+            WeaponUpgrade weaponToUpgrade = availableWeaponUgrades[Random.Range(0, UpgradeOptions.Count)]; // Choose 1 upgrade from all possibles 
+            availableWeaponUgrades.Remove(weaponToUpgrade);
+            if (weaponToUpgrade != null) // Double checking 
             {
                 EnagleUpgradeUI(upgrade);
                 bool newWeapon = false;
                 for (int i = 0; i < WeaponSlots.Count; i++)
                 {
                     if (WeaponSlots[i] != null &&
-                        WeaponSlots[i].WeaponData == WeaponToUpgrade.WeaponData) // Browse through all the list 
+                        WeaponSlots[i].WeaponData == weaponToUpgrade.WeaponData) // Browse through all the list 
                     {
                         if (!newWeapon) // if not a new weapon then upgrade the previous one in the specified slot index
                         {
-                            if (!WeaponToUpgrade.WeaponData.NextUpgrade)
+                            if (!weaponToUpgrade.WeaponData.NextUpgrade)
                             {
                                  DisableUpgradeUI(upgrade);
                                 break;
                             }
                             upgrade.UpgradeButton.onClick.AddListener(() =>
-                                LevelUpWeapon(i, WeaponToUpgrade.weaponUprgadeIndex));
-                            upgrade.UpgradeDescription.text = WeaponToUpgrade.WeaponData.NextUpgrade
+                                LevelUpWeapon(i, weaponToUpgrade.weaponUprgadeIndex));
+                            upgrade.UpgradeDescription.text = weaponToUpgrade.WeaponData.NextUpgrade
                                 .GetComponent<WeaponManager>().WeaponData.UpgradeDescription; 
                         }
 
@@ -150,8 +148,8 @@ public class PlayerInventory : MonoBehaviour
                 if (newWeapon) // if it's a new weapon, you add a new weapon 
                 {
                     upgrade.UpgradeButton.onClick.AddListener(() =>
-                        _player.SpawnWeapon(WeaponToUpgrade.startingWeapon));
-                    upgrade.UpgradeDescription.text = WeaponToUpgrade.WeaponData.UpgradeDescription;
+                        _player.SpawnWeapon(weaponToUpgrade.startingWeapon));
+                    upgrade.UpgradeDescription.text = weaponToUpgrade.WeaponData.UpgradeDescription;
                 }
             }
         }

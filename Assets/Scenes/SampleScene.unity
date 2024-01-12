@@ -3960,12 +3960,16 @@ MonoBehaviour:
     - enemyName: 
       enemyCount: 3
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: 5d0e60ea0571b6245921e5d3661901bf, type: 3}
+      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
     waveQuota: 0
     spawnInterval: 0
     spawnCount: 0
   - waveName: Wave 1
     enemyGroups:
+    - enemyName: 
+      enemyCount: 10
+      spawnCount: 0
+      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
     - enemyName: 
       enemyCount: 3
       spawnCount: 0
