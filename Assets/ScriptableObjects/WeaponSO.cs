@@ -9,7 +9,7 @@ using Image = Microsoft.Unity.VisualStudio.Editor.Image;
 [CreateAssetMenu(fileName = "WeaponsSO", menuName = "ScriptableObjects/weapons")]
 public class WeaponSO : ScriptableObject
 {
-    public Image icon;
+    public Sprite icon;
     public GameObject prefab;
     public int level;
     public float damage;

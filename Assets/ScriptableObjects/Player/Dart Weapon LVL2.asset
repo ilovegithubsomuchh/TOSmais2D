@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581c222171b15f5468edb8f997c9adcb, type: 3}
   m_Name: Dart Weapon LVL2
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: ac609090c807e594699753581d2b5307, type: 3}
   prefab: {fileID: 5283865695968247555, guid: bad931b6a8277394c9f4fa4875d10bae, type: 3}
   level: 0
   damage: 0
@@ -20,4 +21,4 @@ MonoBehaviour:
   cooldownDuration: 1.5
   TimeBeforeDestruction: 0
   NextUpgrade: {fileID: 0}
-  UpgradeDescription: Augmente la vitesse d'attaque.
+  UpgradeDescription: Not Supposed to show

@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     // Method called when the level up is complete
     public void EndLevelUp()
     {
-        Debug.Log("here");
+        
         // Toggle the isLeveling variable
         isLeveling = !isLeveling;
         
