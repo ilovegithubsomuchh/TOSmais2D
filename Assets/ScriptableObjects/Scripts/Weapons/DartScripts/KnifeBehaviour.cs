@@ -58,13 +58,17 @@ public class KnifeBehaviour : WeaponManager
 
 
         // If WeaponDirectionY is not zero, flip the sprite vertically
-      
 
-        if (WeaponDirectionY != 0 && WeaponDirectionX != 0)
+
+        if (WeaponDirectionY != 0)
         {
-           // angle *= -1;
-            Debug.Log("here");
+            _spriteRenderer.flipY = false;
+            if (WeaponDirectionX != 0)
+            {
+                angle *= -1;
+            }
         }
+        
         
 
         // Apply rotation to the object on the z-axis
