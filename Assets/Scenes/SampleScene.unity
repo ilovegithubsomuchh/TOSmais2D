@@ -502,8 +502,6 @@ MonoBehaviour:
     WeaponData: {fileID: 11400000, guid: 4aacb7cf945d22c48a5c664d7157178d, type: 2}
   - Weapon: {fileID: 3831143133357916062, guid: 500bb8fdc42b95d498cbd6ffe3c7eaa9, type: 3}
     WeaponData: {fileID: 11400000, guid: f7d31853492499a4db34d71bcb0c5f3e, type: 2}
-  - Weapon: {fileID: 3831143133357916062, guid: 500bb8fdc42b95d498cbd6ffe3c7eaa9, type: 3}
-    WeaponData: {fileID: 11400000, guid: f7d31853492499a4db34d71bcb0c5f3e, type: 2}
 --- !u!114 &281449187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3948,6 +3946,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
+  - waveName: Wave 1
+    enemyGroups:
+    - enemyName: 
+      enemyCount: 3
+      spawnCount: 0
+      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
+    waveQuota: 0
+    spawnInterval: 0
+    spawnCount: 0
+  - waveName: Wave 1
+    enemyGroups:
+    - enemyName: 
+      enemyCount: 3
+      spawnCount: 0
+      enemyPrefab: {fileID: 1294919193586820810, guid: 5d0e60ea0571b6245921e5d3661901bf, type: 3}
+    waveQuota: 0
+    spawnInterval: 0
+    spawnCount: 0
   - waveName: Wave 1
     enemyGroups:
     - enemyName: 

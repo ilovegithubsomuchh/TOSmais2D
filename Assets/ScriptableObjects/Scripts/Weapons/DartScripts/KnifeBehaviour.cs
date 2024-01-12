@@ -21,6 +21,10 @@ public class KnifeBehaviour : WeaponManager
         // Initialize WeaponDirectionX and WeaponDirectionY with PlayerMovement input values
         WeaponDirectionX = PlayerMovement._inputValueX;
         WeaponDirectionY = PlayerMovement._inputValueY;
+        
+        WeaponDirectionX = (WeaponDirectionX != 0) ? Mathf.Sign(WeaponDirectionX) : 0;
+        WeaponDirectionY = (WeaponDirectionY != 0) ? Mathf.Sign(WeaponDirectionY) : 0;
+
 
         // If both input values are approximately 0, set WeaponDirectionX to 1
         if (Mathf.Approximately(WeaponDirectionX, 0) && Mathf.Approximately(WeaponDirectionY, 0))
@@ -60,12 +64,14 @@ public class KnifeBehaviour : WeaponManager
         // If WeaponDirectionY is not zero, flip the sprite vertically
       
 
-        if (WeaponDirectionY != 0 && WeaponDirectionX != 0)
+        if (WeaponDirectionY != 0)
         {
-           // angle *= -1;
-            Debug.Log("here");
+            _spriteRenderer.flipY = false;
+            if (WeaponDirectionX != 0)
+            {
+                angle *= -1;
+            }
         }
-        
 
         // Apply rotation to the object on the z-axis
         transform.rotation = Quaternion.Euler(0, 0, angle);

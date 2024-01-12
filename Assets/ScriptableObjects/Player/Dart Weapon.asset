@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5283865695968247555, guid: bad931b6a8277394c9f4fa4875d10bae, type: 3}
   level: 0
-  damage: 10
+  damage: 100
   speed: 20
-  NumberToSpawn: 2
-  cooldownDuration: 5
+  NumberToSpawn: 5
+  cooldownDuration: 1
   TimeBeforeDestruction: 4
   NextUpgrade: {fileID: 3018636775563334298, guid: afd6f3704077dd94ea61dbf24f23e20f, type: 3}
   UpgradeDescription: "Ajoute une fl\xE9chette \xE0 votre inventaire."
