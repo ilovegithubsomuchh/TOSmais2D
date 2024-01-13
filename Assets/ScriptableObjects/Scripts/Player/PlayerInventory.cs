@@ -101,31 +101,53 @@ public class PlayerInventory : MonoBehaviour
 
     public void LevelUpWeapon(int slotIndex, int upgradeIndex)
     {
-        if (WeaponSlots.Count > slotIndex &&
-            (WeaponSlots != null)) // Check if index to upgrade weapon is not out of range
+        if (WeaponSlots.Count > slotIndex && WeaponSlots[slotIndex] != null)
         {
             WeaponManager weaponManager = WeaponSlots[slotIndex];
 
-            GameObject UpgradedWeapon = Instantiate(weaponManager.WeaponData.NextUpgrade, transform.position,
-                Quaternion.identity);
+            GameObject upgradedWeapon = Instantiate(weaponManager.WeaponData.NextUpgrade, transform.position, Quaternion.identity);
+            upgradedWeapon.transform.SetParent(transform);
 
-            UpgradedWeapon.transform.SetParent(transform);
+            // Find the child with the same weapon data as the upgraded weapon
+            GameObject previousWeapon = FindChildByWeaponData(weaponManager.WeaponData);
 
-            AddWeapon(slotIndex, UpgradedWeapon.GetComponent<WeaponManager>());
-            Destroy(transform.GetChild(slotIndex)
-                .gameObject); // Create a child with the next update from the previous weaponManager, and remove the previous one
-            UpgradeOptions[upgradeIndex].WeaponData = UpgradedWeapon.GetComponent<WeaponManager>().WeaponData;
-            _gameManager.EndLevelUp(); // Finish the level up options in the gameManager
+            if (previousWeapon != null)
+            {
+                // Destroy the previous weapon after setting up the new one
+                Destroy(previousWeapon);
+            }
+
+            AddWeapon(slotIndex, upgradedWeapon.GetComponent<WeaponManager>());
+
+            UpgradeOptions[upgradeIndex].WeaponData = upgradedWeapon.GetComponent<WeaponManager>().WeaponData;
+            _gameManager.EndLevelUp();
         }
     }
 
-   void UpgradeOption()
+    private GameObject FindChildByWeaponData(WeaponSO weaponData)
+    {
+        foreach (Transform child in transform)
+        {
+            WeaponManager weaponManager = child.GetComponent<WeaponManager>();
+            if (weaponManager != null && weaponManager.WeaponData == weaponData)
+            {
+                return child.gameObject;
+            }
+        }
+
+        return null;
+    }
+
+
+
+void UpgradeOption()
 {
     List<WeaponUpgrade> availableWeaponUpgrades = new List<WeaponUpgrade>(UpgradeOptions);
-    
+
     foreach (var upgrade in UIOptions) // Checking all possible upgrades
     {
         WeaponUpgrade weaponToUpgrade = null;
+        bool newWeapon = false; // Reset the newWeapon flag at the beginning
 
         // Loop until a different upgrade is picked
         do
@@ -134,9 +156,7 @@ public class PlayerInventory : MonoBehaviour
             {
                 // No more unique upgrades available, break the loop
                 DisableUpgradeUI(upgrade);
-                
                 break;
-                
             }
 
             // Choose 1 upgrade from all possible upgrades
@@ -146,9 +166,8 @@ public class PlayerInventory : MonoBehaviour
         if (weaponToUpgrade != null)
         {
             availableWeaponUpgrades.Remove(weaponToUpgrade);
-            
+
             EnagleUpgradeUI(upgrade);
-            bool newWeapon = false;
 
             for (int i = 0; i < WeaponSlots.Count; i++)
             {
@@ -178,7 +197,6 @@ public class PlayerInventory : MonoBehaviour
                 }
             }
 
-
             if (newWeapon)
             {
                 Debug.Log("newWeapon");
@@ -190,6 +208,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 }
+
 
 
 
