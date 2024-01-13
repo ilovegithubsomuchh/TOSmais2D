@@ -3627,6 +3627,7 @@ MonoBehaviour:
   PlayerObjects: {fileID: 281449184}
   Enemy: {fileID: 2097158545}
   EndLevelUI: {fileID: 2026677521}
+  son: {fileID: 8300000, guid: 47056c93802ba1949ad1b1ff2845ba51, type: 3}
 --- !u!4 &1655213273
 Transform:
   m_ObjectHideFlags: 0
@@ -4101,7 +4102,7 @@ MonoBehaviour:
     - enemyName: 
       enemyCount: 5
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
+      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
     waveQuota: 0
     spawnInterval: 1
     spawnCount: 0
@@ -4110,28 +4111,28 @@ MonoBehaviour:
     - enemyName: 
       enemyCount: 5
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
+      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
     - enemyName: 
       enemyCount: 15
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
+      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
     waveQuota: 0
     spawnInterval: 1.5
     spawnCount: 0
   - waveName: Wave 3
     enemyGroups:
     - enemyName: 
-      enemyCount: 5
-      spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
-    - enemyName: 
       enemyCount: 10
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
+      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
+    - enemyName: 
+      enemyCount: 5
+      spawnCount: 0
+      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
     - enemyName: 
       enemyCount: 2
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
+      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
     waveQuota: 0
     spawnInterval: 0.75
     spawnCount: 0
@@ -4140,11 +4141,11 @@ MonoBehaviour:
     - enemyName: 
       enemyCount: 5
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
+      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
     - enemyName: 
       enemyCount: 15
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
+      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
     waveQuota: 0
     spawnInterval: 5
     spawnCount: 0
@@ -4153,11 +4154,7 @@ MonoBehaviour:
     - enemyName: 
       enemyCount: 10
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
-    - enemyName: 
-      enemyCount: 10
-      spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
+      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
     - enemyName: 
       enemyCount: 5
       spawnCount: 0
@@ -4165,22 +4162,13 @@ MonoBehaviour:
     - enemyName: 
       enemyCount: 5
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
-    waveQuota: 0
-    spawnInterval: 3
-    spawnCount: 0
-  - waveName: Wave 1
-    enemyGroups:
+      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
     - enemyName: 
       enemyCount: 10
-      spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
-    - enemyName: 
-      enemyCount: 3
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
     waveQuota: 0
-    spawnInterval: 0
+    spawnInterval: 3
     spawnCount: 0
   currentWaveCount: 0
   GameManager: {fileID: 1655213272}

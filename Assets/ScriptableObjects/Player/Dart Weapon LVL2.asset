@@ -21,4 +21,4 @@ MonoBehaviour:
   cooldownDuration: 1.5
   TimeBeforeDestruction: 0
   NextUpgrade: {fileID: 0}
-  UpgradeDescription: Not Supposed to show
+  UpgradeDescription: '+1 arrow '

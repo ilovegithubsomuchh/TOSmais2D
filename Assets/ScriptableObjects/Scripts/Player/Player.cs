@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         _playerInventory = GetComponent<PlayerInventory>(); // Including  component variables 
         SpawnBaseWeapon(PlayerData.baseWeapon); // spawn the base player weapon
-        _maxlife = 100f;
+        _maxlife = 1000f;
         _currentLife = _maxlife;
     }
 
