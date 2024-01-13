@@ -6,21 +6,45 @@ using UnityEngine;
 public class Sbire : BaseEnemy
 {
     private Player _player;
-    private int dmg = 10;
-    
+    private float AvoidanceForce = 2f;
+
     public override void Move()
     {
         Vector2 targetPosition = playerTransform.transform.position;
 
-        // Check if there is an obstacle in the path
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPosition - (Vector2)transform.position, Vector2.Distance(transform.position, targetPosition), LayerMask.GetMask("Ennemy"));
+     
 
-        if (hit.collider == null)
+        // Check if there are other enemies in the vicinity
+        float avoidanceRadius = Mathf.Max(GetComponent<Rigidbody2D>().transform.localScale.x,
+            GetComponent<Rigidbody2D>().transform.localScale.y);
+        Collider2D[] colliders =
+            Physics2D.OverlapCircleAll(transform.position, avoidanceRadius, LayerMask.GetMask("Enemy"));
+
+        foreach (Collider2D collider in colliders)
         {
-            // If no obstacle, move towards the player
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, enemyData.MoveSpeed * Time.deltaTime);
+            if (collider.gameObject != gameObject) // Exclude the current enemy
+            {
+                // If there is another enemy in the vicinity, adjust the target position
+                Vector2 avoidanceVector = transform.position - collider.bounds.center;
+                targetPosition += avoidanceVector.normalized * CalculateAvoidanceForce(avoidanceRadius);
+                
+            }
+            else
+            {
+                GetComponent<Rigidbody2D>().MovePosition(Vector2.MoveTowards(transform.position, targetPosition,
+                    enemyData.MoveSpeed * Time.deltaTime));
+            }
         }
+           
     }
+
+    float CalculateAvoidanceForce(float avoidanceRadius)
+        {
+            // You can adjust this formula or set AvoidanceForce directly based on your needs
+            return AvoidanceForce / avoidanceRadius;
+        }
+  
+
     public override void Attack()
     {
        

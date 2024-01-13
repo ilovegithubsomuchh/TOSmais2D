@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3400738464748285956}
   - component: {fileID: 2780224252269653009}
   - component: {fileID: 696269805849239698}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemySbire
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
