@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileEnemyDistance : MonoBehaviour
@@ -34,6 +32,15 @@ public class ProjectileEnemyDistance : MonoBehaviour
         distanceTraveled += speed * Time.deltaTime;
         if (distanceTraveled > maxDistance)
         {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            Debug.Log("Pro");
             Destroy(gameObject);
         }
     }

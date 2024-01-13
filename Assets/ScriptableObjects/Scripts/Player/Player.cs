@@ -1,10 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
-
 
 [RequireComponent(typeof(PlayerMovement), typeof(PlayerInventory))] // Mandatory Player's component.
 public class Player : MonoBehaviour

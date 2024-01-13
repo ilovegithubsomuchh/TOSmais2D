@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Herald : BaseEnemy
@@ -83,11 +81,7 @@ public class Herald : BaseEnemy
         }
         if (isCharging)
         {
-            Debug.Log("destroy");
-            //Destroy(player);
-            
             transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, chargeSpeed * Time.deltaTime);
-            
         }
     }
 

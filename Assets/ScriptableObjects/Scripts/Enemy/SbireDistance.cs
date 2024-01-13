@@ -1,13 +1,12 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
 public class SbireDistance : BaseEnemy
 {
     [SerializeField] private GameObject projectileGO;
-    [SerializeField] private float speedProjectile;
-    
+
     private bool inRange;
     private bool isShooting;
 
@@ -32,17 +31,16 @@ public class SbireDistance : BaseEnemy
     {
         isShooting = false;
         Instantiate(projectileGO, transform.position, quaternion.identity);
-
+       
     }
     
     public override void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
-        /*if (currentHealth < 0)
+        if (currentHealth < 0)
         {
             Kill();
-            
-        } */
+        }
     }
     
     public override void Kill()
@@ -78,5 +76,5 @@ public class SbireDistance : BaseEnemy
 
         }
     }
-
+    
 }
