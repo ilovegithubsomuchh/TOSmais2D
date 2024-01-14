@@ -6,6 +6,7 @@ public class MenuManager : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 1;
     }
 
     public void QuitGame()

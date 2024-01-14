@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Nothing in the Update function for now
+
+        if (isLeveling)
+        {
+            Time.timeScale = 0f;
+        }
     }
 
     // Method called to trigger the level up
@@ -78,4 +83,5 @@ public class GameManager : MonoBehaviour
         // Deactivate the level up UI
         EndLevelUI.gameObject.SetActive(false);
     }
+    
 }

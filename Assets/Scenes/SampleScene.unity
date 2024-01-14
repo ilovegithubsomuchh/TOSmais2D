@@ -443,6 +443,7 @@ GameObject:
   - component: {fileID: 281449189}
   - component: {fileID: 281449190}
   - component: {fileID: 281449191}
+  - component: {fileID: 281449192}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -653,6 +654,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &281449192
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281449184}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &309661431
 GameObject:
   m_ObjectHideFlags: 0
@@ -4102,7 +4130,7 @@ MonoBehaviour:
     - enemyName: 
       enemyCount: 5
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
+      enemyPrefab: {fileID: 1294919193586820810, guid: 5d0e60ea0571b6245921e5d3661901bf, type: 3}
     waveQuota: 0
     spawnInterval: 1
     spawnCount: 0
