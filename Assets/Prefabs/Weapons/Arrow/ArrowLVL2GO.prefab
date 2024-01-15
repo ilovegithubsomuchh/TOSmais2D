@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4330719333812353530}
-  - component: {fileID: 4471286760708501726}
+  - component: {fileID: -6012985550963637923}
   m_Layer: 0
-  m_Name: FlecheControllet
+  m_Name: ArrowLVL2GO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4471286760708501726
+--- !u!114 &-6012985550963637923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add02578a0e3ddb4d81541a3361969ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponData: {fileID: 11400000, guid: 4aacb7cf945d22c48a5c664d7157178d, type: 2}
+  WeaponData: {fileID: 11400000, guid: 046f87f4ea4a72e48964e8eed77a60c9, type: 2}

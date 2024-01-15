@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581c222171b15f5468edb8f997c9adcb, type: 3}
+  m_Name: ArrowWeaponLVL2
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: ac609090c807e594699753581d2b5307, type: 3}
+  prefab: {fileID: 5283865695968247555, guid: bad931b6a8277394c9f4fa4875d10bae, type: 3}
+  level: 0
+  damage: 0
+  speed: 20
+  NumberToSpawn: 2
+  cooldownDuration: 2
+  TimeBeforeDestruction: 0
+  NextUpgrade: {fileID: 3018636775563334298, guid: a42058696228e0e44a9fd38086443804, type: 3}
+  UpgradeDescription: "Fait apparaitre une fl\xE9chette de plus."

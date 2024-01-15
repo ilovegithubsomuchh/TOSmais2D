@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 581c222171b15f5468edb8f997c9adcb, type: 3}
-  m_Name: Sword Weapon LVL3
+  m_Name: Sword Weapon LVL1
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: dec8a526ac3617546aad529d45978e1d, type: 3}
   prefab: {fileID: 1800318107515779695, guid: f2588a7a053918b4e87f7e03b86ad663, type: 3}
-  level: 0
+  level: 1
   damage: 100
-  speed: 190
-  NumberToSpawn: 2
+  speed: 130
+  NumberToSpawn: 1
   cooldownDuration: 2
   TimeBeforeDestruction: 1.9
-  NextUpgrade: {fileID: 0}
-  UpgradeDescription: +1 sword
+  NextUpgrade: {fileID: 3831143133357916062, guid: 410d838a893d30a42a4a506309ac4433, type: 3}
+  UpgradeDescription: Add a rotating sword around the player
