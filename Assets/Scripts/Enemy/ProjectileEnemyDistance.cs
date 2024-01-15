@@ -43,6 +43,7 @@ public class ProjectileEnemyDistance : MonoBehaviour
             Debug.Log("Pro");
             Destroy(gameObject);
         }
+        Debug.Log("here");
     }
 }
 
