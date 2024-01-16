@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class KnifeBehaviour : WeaponManager
 {
-    public PlayerMovement PlayerMovement;
+    private PlayerMovement PlayerMovement;
     private float WeaponDirectionX;
     private float WeaponDirectionY;
     private SpriteRenderer _spriteRenderer;

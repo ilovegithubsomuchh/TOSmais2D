@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581c222171b15f5468edb8f997c9adcb, type: 3}
+  m_Name: ScytheSOLVL2
+  m_EditorClassIdentifier: 
+  icon: {fileID: 874670804, guid: 3ab1c561f6d821b47ba94cacb22491ce, type: 3}
+  prefab: {fileID: 5647139860648157564, guid: d27c3b78eb30ae644b59f13223d6c67a, type: 3}
+  level: 0
+  damage: 10
+  speed: 3
+  NumberToSpawn: 0
+  cooldownDuration: 1
+  TimeBeforeDestruction: 3
+  NextUpgrade: {fileID: 4869655064933590807, guid: 46fd0537c155a264a844e02ee10eadc0, type: 3}
+  UpgradeDescription: 

@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     {
         // Nothing in the Update function for now
 
+        if(Input.GetKeyDown(KeyCode.K)) LevelUp();
         if (isLeveling)
         {
             Time.timeScale = 0f;

@@ -6,7 +6,6 @@ public class SwordController : WeaponManager
 {
     private int swordToSpawn;
     private GameObject Sword;
-    public float test;
 
     protected override void Start()
     {
