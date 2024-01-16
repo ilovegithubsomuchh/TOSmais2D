@@ -52,6 +52,11 @@ public class EnemySpawner : MonoBehaviour
             spawnTimer = 0f;
             SpawnEnemies();
         }
+        
+        if (BaseEnemy.CountKilledEnemy() == test)
+        {
+            GameManager.LevelUp();
+        }
     }
 
     void CalculateWaveQuota()
@@ -84,10 +89,6 @@ public class EnemySpawner : MonoBehaviour
                     waves[currentWaveCount].spawnCount++;
                 }
             }
-        }
-        else if (BaseEnemy.CountKilledEnemy() == test)
-        {
-            GameManager.LevelUp();
         }
     }
 
