@@ -13,6 +13,7 @@ public abstract class BaseEnemy : MonoBehaviour
     protected bool canDamage;
 
     protected static int killedEnemy;
+    protected bool dead;
     [SerializeField]
     protected float distanceToPlayer;
     
@@ -20,9 +21,21 @@ public abstract class BaseEnemy : MonoBehaviour
 
     public abstract void Attack();
 
-    public abstract void TakeDamage(float dmg);
+    public virtual void TakeDamage(float dmg)
+    {
+             
+        if (currentHealth < 0 && !dead)
+        {
+            dead = true;
+            Debug.Log("mort");
+            Kill();
+        }
+    }
 
-    public abstract void Kill();
+    public virtual void Kill()
+    {
+        killedEnemy++;
+    }
     
     public virtual void Start()
     {

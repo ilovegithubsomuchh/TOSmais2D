@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [Header("Inventory Variables")] public int weaponIndex;
     
     [SerializeField] [Header("Player Stats")] private float _maxlife;
-   private static float _currentLife;
+    private static float _currentLife;
     private static readonly int IsDead = Animator.StringToHash("IsDead");
 
 
@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         _playerInventory = GetComponent<PlayerInventory>(); // Including  component variables 
         SpawnBaseWeapon(PlayerData.baseWeapon); // spawn the base player weapon
-        _maxlife = 1000f;
         _currentLife = _maxlife;
     }
 

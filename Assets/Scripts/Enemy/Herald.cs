@@ -42,16 +42,13 @@ public class Herald : BaseEnemy
     public override void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
-        if (currentHealth < 0)
-        {
-            Kill();
-        }
+        base.TakeDamage(dmg);
     }
 
     public override void Kill()
     {
         Destroy(gameObject);
-        killedEnemy++;
+        base.Kill();
     }
 
     private void Awake()

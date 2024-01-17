@@ -4,12 +4,17 @@ using UnityEngine;
 public class ProjectileEnemyDistance : MonoBehaviour
 
 {
-    private Transform target;
+    
     public float speed = 5f;
     public float maxDistance = 10f;
 
+    [SerializeField] private int dmg;
+    
+    private Transform target;
     private Vector3 initialDirection;
     private float distanceTraveled;
+    private Player _player;
+    
 
     void Start()
     {
@@ -40,8 +45,11 @@ public class ProjectileEnemyDistance : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            Debug.Log("Pro");
+            _player = col.GetComponent<Player>();
+            _player.TakeDamage(dmg);
             Destroy(gameObject);
+            
+            
         }
         Debug.Log("here");
     }

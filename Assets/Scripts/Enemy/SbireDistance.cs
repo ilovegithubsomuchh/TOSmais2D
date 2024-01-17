@@ -15,7 +15,6 @@ public class SbireDistance : BaseEnemy
         currentMoveSpeed = enemyData.MoveSpeed;
         currentHealth = enemyData.MaxHealth;
         currentDamage = enemyData.Damage;
-        isShooting = true;
     }
     
     public override void Move()
@@ -29,7 +28,7 @@ public class SbireDistance : BaseEnemy
     
     public override void Attack()
     {
-        isShooting = false;
+        isShooting = true;
         Instantiate(projectileGO, transform.position, quaternion.identity);
        
     }
@@ -37,17 +36,13 @@ public class SbireDistance : BaseEnemy
     public override void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
-        if (currentHealth < 0)
-        {
-            Kill();
-        }
+        base.TakeDamage(dmg);
     }
     
     public override void Kill()
     {
-
         Destroy(gameObject);
-        killedEnemy++;
+        base.Kill();
         
     }
     
@@ -68,11 +63,11 @@ public class SbireDistance : BaseEnemy
 
     IEnumerator Projectile()
     {
-        while (inRange && isShooting)
+        while (inRange && !isShooting)
         {
             Attack();
             yield return new WaitForSeconds(1f);
-            isShooting = true;
+            isShooting = false;
 
         }
     }

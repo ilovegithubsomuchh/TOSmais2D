@@ -547,7 +547,7 @@ MonoBehaviour:
   PlayerData: {fileID: 11400000, guid: 5a36a2c82d77a2d43b082a657661cb04, type: 2}
   _gameManager: {fileID: 1655213272}
   weaponIndex: 0
-  _maxlife: 0
+  _maxlife: 100
 --- !u!114 &281449186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6108,6 +6108,10 @@ MonoBehaviour:
     spawnCount: 0
   currentWaveCount: 0
   GameManager: {fileID: 1655213272}
+  MinSpawnX: -30
+  MaxSpawnX: 30
+  MinSpawnY: -30
+  MaxSpawnY: 30
 --- !u!4 &2097158547
 Transform:
   m_ObjectHideFlags: 0

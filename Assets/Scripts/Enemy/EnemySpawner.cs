@@ -31,10 +31,13 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawner Attributes")] private float spawnTimer; //Timer use to determine when to spawn the next enemy
 
     private Transform player;
-
     private BaseEnemy _baseEnemy;
-
     private int test = 0;
+
+    [SerializeField] private float MinSpawnX;
+    [SerializeField]private float MaxSpawnX;
+    [SerializeField]private float MinSpawnY;
+    [SerializeField]private float MaxSpawnY;
 
     void Start()
     {
@@ -45,6 +48,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(BaseEnemy.CountKilledEnemy());
         spawnTimer += Time.deltaTime;
 
         if (spawnTimer >= waves[currentWaveCount].spawnInterval)
@@ -81,8 +85,8 @@ public class EnemySpawner : MonoBehaviour
                 //Check if the minimum number of enemies of this type have been spwned
                 if (enemyGroup.spawnCount < enemyGroup.enemyCount)
                 {
-                    Vector2 spawnPosition = new Vector2(player.transform.position.x + Random.Range(-10f, 10f),
-                        player.transform.position.y + Random.Range(-10f, 10f));
+                    Vector2 spawnPosition = new Vector2(player.transform.position.x + Random.Range(MinSpawnX, MaxSpawnX),
+                        player.transform.position.y + Random.Range(MinSpawnY, MaxSpawnY));
                     Instantiate(enemyGroup.enemyPrefab, spawnPosition, quaternion.identity);
 
                     enemyGroup.spawnCount++;
