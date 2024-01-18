@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ScytheBehaviour : WeaponManager
@@ -64,7 +65,7 @@ public class ScytheBehaviour : WeaponManager
             case -135:
                 return -135f;
             case 180:
-                _spriteRenderer.flipX = true;
+                
                 return 180f;
             default:
                 return 0f;
@@ -110,6 +111,10 @@ public class ScytheBehaviour : WeaponManager
         float targetRotation = initialRotation - 180f;
         angle = Mathf.MoveTowards(angle, targetRotation, WeaponData.speed/ 10);
         transform.rotation = Quaternion.Euler(0, 0, angle);
+        if (Math.Abs(angle - targetRotation) < .5f)
+        {
+            Destroy();
+        }
     }
 
     
