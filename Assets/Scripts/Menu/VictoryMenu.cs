@@ -7,13 +7,6 @@ public class VictoryMenu : MonoBehaviour
 {
     public GameObject victoryMenuUI;
     
-    public void NewGame()
-    {
-        SceneManager.LoadScene("SampleScene");
-        victoryMenuUI.SetActive(false);
-        Time.timeScale = 1;
-    }
-    
     public void LoadMainMenu()
     {
         victoryMenuUI.SetActive(false);
