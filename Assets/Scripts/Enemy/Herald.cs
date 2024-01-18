@@ -72,10 +72,6 @@ public class Herald : BaseEnemy
     public override void Update()
     {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Kill();
-        }
         if (isCharging)
         {
             transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, chargeSpeed * Time.deltaTime);
