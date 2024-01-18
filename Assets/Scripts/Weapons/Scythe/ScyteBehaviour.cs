@@ -65,6 +65,10 @@ public class ScytheBehaviour : WeaponManager
             RotateScythe();
          
         }
+        else
+        {
+            if(transform.parent != null) Destroy();
+        }
         
         if (transform.parent == null)
         {
@@ -76,15 +80,15 @@ public class ScytheBehaviour : WeaponManager
     {
         // Rotate the scythe towards -180 degrees (clockwise) for a half-circle
         float targetRotation = initialRotation - 180f;
-        angle = Mathf.MoveTowards(angle, targetRotation, WeaponData.speed * Time.deltaTime);
+        angle = Mathf.MoveTowards(angle, targetRotation, WeaponData.speed);
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private void ThrowScythe()
     {
         // Move the scythe based on player input
-        Vector3 movement = new Vector3(playerMovement._inputValueX * WeaponData.speed,
-            playerMovement._inputValueY * WeaponData.speed , 0);
+        Vector3 movement = new Vector3(playerMovement._inputValueX * WeaponData.speed /4,
+            playerMovement._inputValueY * WeaponData.speed /4 , 0);
 
         transform.position += movement;
     }

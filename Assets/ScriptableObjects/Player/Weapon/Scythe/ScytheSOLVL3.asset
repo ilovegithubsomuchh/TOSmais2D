@@ -16,9 +16,9 @@ MonoBehaviour:
   prefab: {fileID: 5647139860648157564, guid: d27c3b78eb30ae644b59f13223d6c67a, type: 3}
   level: 0
   damage: 1500
-  speed: 3
+  speed: 1
   NumberToSpawn: 0
   cooldownDuration: 2
   TimeBeforeDestruction: 3
   NextUpgrade: {fileID: 4869655064933590807, guid: db17eb639cd983f40bdeecc2b21e5ba9, type: 3}
-  UpgradeDescription: 
+  UpgradeDescription: Deal More Damage
