@@ -39,6 +39,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]private float MinSpawnY;
     [SerializeField]private float MaxSpawnY;
 
+    public GameObject victoryMenuUI;
+
     void Start()
     {
         player = FindObjectOfType<PlayerMovement>().transform;
@@ -100,9 +102,17 @@ public class EnemySpawner : MonoBehaviour
     
     { if (waves[currentWaveCount].spawnCount == waves[currentWaveCount].waveQuota)
         {
-            currentWaveCount++;
-            CalculateWaveQuota();
-            test += waves[currentWaveCount].waveQuota;
+            if (currentWaveCount == 9)
+            {
+                victoryMenuUI.SetActive(true);
+            }
+            else
+            {
+                currentWaveCount++;
+                CalculateWaveQuota();
+                test += waves[currentWaveCount].waveQuota;  
+            }
+                
            
         }
     }
