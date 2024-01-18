@@ -681,7 +681,7 @@ MonoBehaviour:
   PlayerData: {fileID: 11400000, guid: 5a36a2c82d77a2d43b082a657661cb04, type: 2}
   _gameManager: {fileID: 1655213272}
   weaponIndex: 0
-  _maxlife: 100
+  _maxlife: 2000
   gameOver: {fileID: 1258235694}
 --- !u!114 &281449186
 MonoBehaviour:
@@ -7292,6 +7292,10 @@ MonoBehaviour:
       enemyCount: 3
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
+    - enemyName: 
+      enemyCount: 3
+      spawnCount: 0
+      enemyPrefab: {fileID: 1294919193586820810, guid: 5d0e60ea0571b6245921e5d3661901bf, type: 3}
     waveQuota: 0
     spawnInterval: 1
     spawnCount: 0
