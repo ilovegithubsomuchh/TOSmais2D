@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SbireDistanceEnemy
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  maxHealth: 75
+  maxHealth: 750
   damage: 100
   armor: 0

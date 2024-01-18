@@ -15,7 +15,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: ac609090c807e594699753581d2b5307, type: 3}
   prefab: {fileID: 5283865695968247555, guid: bad931b6a8277394c9f4fa4875d10bae, type: 3}
   level: 0
-  damage: 15
+  damage: 250
   speed: 20
   NumberToSpawn: 1
   cooldownDuration: 1.2
