@@ -105,6 +105,7 @@ public class EnemySpawner : MonoBehaviour
             if (currentWaveCount == 9)
             {
                 victoryMenuUI.SetActive(true);
+                Time.timeScale = 0;
             }
             else
             {
