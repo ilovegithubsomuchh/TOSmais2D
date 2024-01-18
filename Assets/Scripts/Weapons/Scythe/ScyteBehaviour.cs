@@ -2,75 +2,95 @@ using UnityEngine;
 
 public class ScytheBehaviour : WeaponManager
 {
-    private float angle;
-    private int attackCounter;
-    private PlayerMovement PlayerMovement;
-    private float WeaponDirectionX;
-    private float WeaponDirectionY;
-    private GameObject player;
-   
+    private float angle; // Current rotation angle of the scythe
+    private PlayerMovement playerMovement; // Reference to the player's movement script
+    private float initialRotation; // Initial rotation of the scythe based on player input
+    private float orientedAngle; // Oriented angle for specific rotations
 
     protected override void Start()
     {
-       
-        player = GameObject.Find("Player");
-        PlayerMovement = FindObjectOfType<PlayerMovement>();
-        // Ensure the object is on the correct Z position and set initial values
+        playerMovement = FindObjectOfType<PlayerMovement>();
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         _destroy = true;
         angle = 0;
-        WeaponDirectionX = PlayerMovement._inputValueX;
-        WeaponDirectionY = PlayerMovement._inputValueY;
-        WeaponDirectionX = (WeaponDirectionX != 0) ? Mathf.Sign(WeaponDirectionX) : 0;
-        WeaponDirectionY = (WeaponDirectionY != 0) ? Mathf.Sign(WeaponDirectionY) : 0;
-        if (Mathf.Approximately(WeaponDirectionX, 0) && Mathf.Approximately(WeaponDirectionY, 0))
+
+        // Calculate the initial rotation based on the player's movement direction
+        Vector2 playerDirection = new Vector2(playerMovement._inputValueX, playerMovement._inputValueY);
+        initialRotation = Mathf.Atan2(playerDirection.y, playerDirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, initialRotation);
+
+        // Set the oriented angle based on initial rotation
+        orientedAngle = CalculateOrientedAngle(initialRotation);
+
+        // Set the initial angle for the scythe rotation
+        angle = orientedAngle;
+    }
+
+    private float CalculateOrientedAngle(float initialRotation)
+    {
+        // Adjust the oriented angle based on initial rotation
+        switch (Mathf.RoundToInt(initialRotation))
         {
-            WeaponDirectionX = 1;
+            case 0:
+                return 0f;
+            case 45:
+                return 45f;
+            case 90:
+                return 90f;
+            case 135:
+                return 135f;
+            case -45:
+                return -45f;
+            case -90:
+                return -90f;
+            case -135:
+                return -135f;
+            case 180:
+                return 180f;
+            default:
+                return 0f;
         }
     }
 
     protected override void Update()
     {
         base.Update();
-       
         Attack();
     }
 
     protected override void Attack()
     {
-        // Check if the scythe should continue rotating
-        if (angle > -140f && transform.parent != null)
+        if (angle > -180 && transform.parent != null)
         {
             RotateScythe();
+         
         }
-        if(transform.parent == null)
+        
+        if (transform.parent == null)
         {
-           ThrowScythe();
+            ThrowScythe();
         }
-    }
-
-    private void ThrowScythe()
-    {
-        
-        Vector3 movement = new Vector3(WeaponDirectionX * (WeaponData.speed * Time.deltaTime),
-            WeaponDirectionY * (WeaponData.speed * Time.deltaTime), 0);
-
-        // Update the position of the GameObject
-        transform.position += movement;
-        RotateScythe();
-        
     }
 
     private void RotateScythe()
     {
-        // Rotate the scythe
-        angle -= WeaponData.speed;
+        // Rotate the scythe towards -180 degrees (clockwise) for a half-circle
+        float targetRotation = initialRotation - 180f;
+        angle = Mathf.MoveTowards(angle, targetRotation, WeaponData.speed * Time.deltaTime);
         transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
+    private void ThrowScythe()
+    {
+        // Move the scythe based on player input
+        Vector3 movement = new Vector3(playerMovement._inputValueX * WeaponData.speed,
+            playerMovement._inputValueY * WeaponData.speed , 0);
+
+        transform.position += movement;
     }
 
     protected override void Destroy()
     {
-        // Destroy the object
         Destroy(gameObject);
     }
 }
