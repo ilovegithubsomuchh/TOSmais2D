@@ -3595,37 +3595,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950556796}
   m_CullTransparentMesh: 1
---- !u!1 &965010847
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 965010848}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &965010848
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 965010847}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 583.12103, y: 227.15479, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &968706785
 GameObject:
   m_ObjectHideFlags: 0
@@ -7355,7 +7324,7 @@ MonoBehaviour:
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
     - enemyName: 
-      enemyCount: 10
+      enemyCount: 8
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: 5d0e60ea0571b6245921e5d3661901bf, type: 3}
     waveQuota: 0
@@ -7381,11 +7350,11 @@ MonoBehaviour:
   - waveName: Wave 6
     enemyGroups:
     - enemyName: 
-      enemyCount: 15
+      enemyCount: 17
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
     - enemyName: 
-      enemyCount: 7
+      enemyCount: 8
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
     waveQuota: 0
@@ -7394,11 +7363,11 @@ MonoBehaviour:
   - waveName: Wave 7
     enemyGroups:
     - enemyName: 
-      enemyCount: 25
+      enemyCount: 20
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
     - enemyName: 
-      enemyCount: 15
+      enemyCount: 12
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: 5d0e60ea0571b6245921e5d3661901bf, type: 3}
     - enemyName: 
@@ -7411,11 +7380,11 @@ MonoBehaviour:
   - waveName: Wave 8
     enemyGroups:
     - enemyName: 
-      enemyCount: 10
+      enemyCount: 30
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: 5d0e60ea0571b6245921e5d3661901bf, type: 3}
     - enemyName: 
-      enemyCount: 15
+      enemyCount: 20
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
     waveQuota: 0
@@ -7437,15 +7406,11 @@ MonoBehaviour:
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
     - enemyName: 
-      enemyCount: 15
+      enemyCount: 20
       spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: c2774a1232e5d324092899e05864ff9b, type: 3}
+      enemyPrefab: {fileID: 1294919193586820810, guid: 5d0e60ea0571b6245921e5d3661901bf, type: 3}
     - enemyName: 
-      enemyCount: 25
-      spawnCount: 0
-      enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
-    - enemyName: 
-      enemyCount: 10
+      enemyCount: 20
       spawnCount: 0
       enemyPrefab: {fileID: 1294919193586820810, guid: 64c732a143825114b95025381f6f924a, type: 3}
     waveQuota: 0
@@ -7488,4 +7453,3 @@ SceneRoots:
   - {fileID: 2097158547}
   - {fileID: 476426757}
   - {fileID: 1914743066}
-  - {fileID: 965010848}
