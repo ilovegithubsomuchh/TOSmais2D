@@ -9,6 +9,7 @@ public class SbireDistance : BaseEnemy
 
     private bool inRange;
     private bool isShooting;
+    private float AvoidanceForce = 2f;
 
     private void Awake()
     {
@@ -19,11 +20,41 @@ public class SbireDistance : BaseEnemy
     
     public override void Move()
     {
+        Vector2 targetPosition = playerTransform.transform.position;
+
+     
+
+        // Check if there are other enemies in the vicinity
+        float avoidanceRadius = Mathf.Max(GetComponent<Rigidbody2D>().transform.localScale.x,
+            GetComponent<Rigidbody2D>().transform.localScale.y);
+        Collider2D[] colliders =
+            Physics2D.OverlapCircleAll(transform.position, avoidanceRadius, LayerMask.GetMask("Enemy"));
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject != gameObject) // Exclude the current enemy
+            {
+                // If there is another enemy in the vicinity, adjust the target position
+                Vector2 avoidanceVector = transform.position - collider.bounds.center;
+                targetPosition += avoidanceVector.normalized * CalculateAvoidanceForce(avoidanceRadius);
+                
+            }
+            else
+            {
+                GetComponent<Rigidbody2D>().MovePosition(Vector2.MoveTowards(transform.position, targetPosition,
+                    enemyData.MoveSpeed * Time.deltaTime));
+            }
+        }
         if (!inRange)
         {
             transform.position = Vector2.MoveTowards(transform.position, playerTransform.transform.position,enemyData.MoveSpeed * Time.deltaTime);
             
         }
+    }
+    float CalculateAvoidanceForce(float avoidanceRadius)
+    {
+        // You can adjust this formula or set AvoidanceForce directly based on your needs
+        return AvoidanceForce / avoidanceRadius;
     }
     
     public override void Attack()
