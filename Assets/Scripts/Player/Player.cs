@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
 
     private bool awake;
+    [SerializeField] GameObject gameOver;
 
     private void Awake()
     {
@@ -38,7 +39,8 @@ public class Player : MonoBehaviour
         if (_currentLife <= 0)
         {
             _animator.SetBool(IsDead, true);
-            //Lancer l"écran de GameOver
+            gameOver.SetActive(true);
+            Time.timeScale = 0f;
         }
         
     }
