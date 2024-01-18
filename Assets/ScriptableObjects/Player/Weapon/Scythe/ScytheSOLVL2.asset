@@ -16,7 +16,7 @@ MonoBehaviour:
   prefab: {fileID: 5647139860648157564, guid: d27c3b78eb30ae644b59f13223d6c67a, type: 3}
   level: 0
   damage: 800
-  speed: 1
+  speed: 20
   NumberToSpawn: 0
   cooldownDuration: 1
   TimeBeforeDestruction: 3

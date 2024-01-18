@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f617bd4935e129449b843bcc9ff805d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 6d308c82082c46248b32780adbcea293, type: 2}
+  enemyData: {fileID: 0}
   distanceToPlayer: 0
-  chargeCooldown: 5
-  chargeSpeed: 5
-  detectionRange: 10
+  chargeCooldown: 0
+  chargeSpeed: 0
+  detectionRange: 0
