@@ -101,6 +101,9 @@ public class ScytheBehaviour : WeaponManager
             transform.position += movement;
             angle -= 4f;
             transform.rotation = Quaternion.Euler(0, 0, angle);
+            if (_destroy) TimeBeforeDestroy += Time.deltaTime;
+            if (TimeBeforeDestroy > WeaponData.TimeBeforeDestruction) Destroy();
+            
         }
     }
 

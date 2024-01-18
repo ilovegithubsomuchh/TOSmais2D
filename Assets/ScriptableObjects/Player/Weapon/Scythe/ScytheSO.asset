@@ -19,6 +19,6 @@ MonoBehaviour:
   speed: 20
   NumberToSpawn: 0
   cooldownDuration: 2
-  TimeBeforeDestruction: 3
+  TimeBeforeDestruction: 5
   NextUpgrade: {fileID: 4869655064933590807, guid: db17eb639cd983f40bdeecc2b21e5ba9, type: 3}
   UpgradeDescription: Add a Scythe in the inventory
