@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement), typeof(PlayerInventory))] // Mandatory Player's component.
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] [Header("Player Stats")] private float _maxlife;
     private static float _currentLife;
     private static readonly int IsDead = Animator.StringToHash("IsDead");
+    public HealthBar healthBar;
 
 
     private bool awake;
@@ -26,11 +28,13 @@ public class Player : MonoBehaviour
         _playerInventory = GetComponent<PlayerInventory>(); // Including  component variables 
         SpawnBaseWeapon(PlayerData.baseWeapon); // spawn the base player weapon
         _currentLife = _maxlife;
+        healthBar.SetMaxHeath(_maxlife);
     }
 
     public void TakeDamage(int dmg)
     {
         _currentLife -= dmg;
+        healthBar.SetHealth(_currentLife);
     }
 
     private void Update()
